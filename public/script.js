@@ -368,7 +368,7 @@ resumenEstadisticas.innerHTML = `
   </div>
 
   <div class="estadistica">
-    <strong>Concierto con más boletos disponibles:</strong>${conciertoMasBoletos.nombre}
+   <strong>Concierto con más boletos disponibles:</strong> ${conciertoMasBoletos.nombre} 
   </div>
   
   <div class="estadistica">

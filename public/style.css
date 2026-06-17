@@ -310,6 +310,29 @@ button:hover {
   color: #666;
 }
 
+.dashboard-titulo {
+  grid-column: 1 / -1;
+  color: #b03060;
+  margin: 12px 0 0;
+}
+
+.dashboard-principal {
+  background: linear-gradient(135deg, #d94f8a, #ff8fbd);
+  color: white;
+}
+
+.dashboard-principal strong,
+.dashboard-principal .numero-dashboard {
+  color: white;
+}
+
+.numero-dashboard {
+  font-size: 2.3rem;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+
 pre {
   background: #450427;
   color: white;
@@ -323,14 +346,22 @@ pre {
     flex-direction: column;
   }
 
+@media (max-width: 800px) {
+  #resumen-estadisticas {
+    grid-template-columns: 1fr;
+  }
+}
+
   .titulo-seccion {
     align-items: flex-start;
   }
 
-#resumen-estadisticas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
+.estadistica {
+  background: linear-gradient(135deg, #fff0f7, #ffe1ec);
+  border: 1px solid #f3a6c9;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 16px rgba(217, 79, 138, 0.18);
+  min-height: 120px;
  }
 }
