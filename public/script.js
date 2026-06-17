@@ -97,7 +97,7 @@ function editarProducto(id) {
 const producto = productos.find(p => p.id === id);
 
 if (!producto) {
-mensaje.textContent = "Producto no encontrado.";
+mensaje.textContent = "Artista no encontrado.";
 mensaje.className = "mensaje-error";
 return;
 }
@@ -106,8 +106,8 @@ document.getElementById("nombre").value = producto.nombre;
 document.getElementById("precio").value = producto.precio;
 document.getElementById("categoria").value = producto.categoria;
 document.getElementById("stock").value = producto.stock;
-btnGuardar.textContent = "Actualizar producto";
-mensaje.textContent = "Editando producto. Modifica los datos y guarda los cambios.";
+btnGuardar.textContent = "Actualizar artista";
+mensaje.textContent = "Editando artista. Modifica los datos y guarda los cambios.";
 mensaje.className = "mensaje-exito";
 cambiarPestana("agregar");
 }
@@ -139,18 +139,19 @@ formProducto.addEventListener("submit", async event => {
 
     if (!respuesta.ok) {
       const error = await respuesta.json();
-      throw new Error(error.mensaje || "No se pudo guardar el producto.");
+      throw new Error(error.mensaje || "No se pudo guardar el artista.");
     }
 
     mensaje.textContent = id
-      ? "Producto actualizado correctamente."
-      : "Producto guardado correctamente.";
+      ? "Artista actualizado correctamente."
+      : "Artista registrado correctamente.";
+      
+      
 
     mensaje.className = "mensaje-exito";
     formProducto.reset();
     productoId.value = "";
-    btnGuardar.textContent = "Guardar producto";
-
+    btnGuardar.textContent = "Guardar artista";
     await obtenerProductos();
     cambiarPestana("productos");
 
@@ -214,14 +215,14 @@ async function editarProducto(id) {
     document.getElementById("categoria").value = producto.categoria;
     document.getElementById("stock").value = producto.stock;
 
-    btnGuardar.textContent = "Actualizar producto";
+    btnGuardar.textContent = "Guardar artista";
 }
   //Cancelar Edición
 btnCancelarEdicion.addEventListener("click", cancelarEdicion);
 function cancelarEdicion() {
 formProducto.reset();
 productoId.value = "";
-btnGuardar.textContent = "Guardar producto";
+btnGuardar.textContent = "Guardar artista";
 mensaje.textContent = "Edición cancelada.";
 mensaje.className = "mensaje-exito";
 }
