@@ -226,7 +226,7 @@ formProducto.addEventListener("submit", async event => {
 
     if (!respuesta.ok) {
       const error = await respuesta.json();
-      throw new Error(error.mensaje || "No se pudo guardar el artista.");
+      throw new Error(error.mensaje || "No se pudo guardar el concierto.");
     }
 
   mensaje.textContent = id
@@ -309,17 +309,7 @@ const recintoMasUsado = Object.keys(conteoRecintos).reduce((a, b) =>
   conteoRecintos[a] > conteoRecintos[b] ? a : b
 );
 
-  //Cancelar Edición
-btnCancelarEdicion.addEventListener("click", cancelarEdicion);
-function cancelarEdicion() {
-formProducto.reset();
-productoId.value = "";
-btnGuardar.textContent = "Guardar concierto";
-mensaje.textContent = "Edición de concierto cancelada.";
-mensaje.className = "mensaje-exito";
-}
-
-  resumenEstadisticas.innerHTML = `
+resumenEstadisticas.innerHTML = `
   <div class="estadistica">
     <strong>Total de conciertos:</strong> ${totalProductos}
   </div>
@@ -353,6 +343,21 @@ mensaje.className = "mensaje-exito";
   </div>
 `;
 });
+
+//Cancelar Edición
+btnCancelarEdicion.addEventListener("click", cancelarEdicion);
+
+function cancelarEdicion() {
+  formProducto.reset();
+  productoId.value = "";
+  btnGuardar.textContent = "Guardar concierto";
+  mensaje.textContent = "Edición de concierto cancelada.";
+  mensaje.className = "mensaje-exito";
+  cambiarPestana("productos");
+}
+
+// 8. Carga inicial
+obtenerProductos();
 
 // 8. Carga inicial
 obtenerProductos();
