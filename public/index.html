@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MusicFest 2026</title>
+  <title>Sistema de conciertos</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="encabezado">
     <h1>MusicFest 2026</h1>
-    <p>Sistema web para gestionar artistas, presentaciones y boletos disponibles de un festival musical de tres días.</p> 
+    <p>Sistema web para gestionar artistas, presentaciones y boletos disponibles de conciertos.</p> 
     </header>
 
   <nav class="tabs">
   <button class="tab active" data-tab="inicio">Inicio</button>
-  <button class="tab" data-tab="productos">Artistas</button>
+  <button class="tab" data-tab="conciertos">Conciertos</button>
   <button class="tab" data-tab="agregar">Agregar concierto</button>
   <button class="tab" data-tab="buscar">Buscar</button>
   <button class="tab" data-tab="estadisticas">Estadísticas</button>
@@ -44,33 +44,33 @@
 </div>
   </section>
 
-  <h2>Bienvenido a MusicFest 2026</h2>
+  <h2>Bienvenido Sistema de conciertos</h2>
   <div class="banner-festival">
-  🎤 MUSICFEST 2026 🎸
+  🎤 Conciertos 🎸
   <br>
   Shakira • Dua Lipa • Maná • Caifanes • The Weeknd • Peso Pluma
 </div>
 
-    <section id="productos" class="tab-content">
+    <section id="concierto" class="tab-content">
       <div class="titulo-seccion">
         <div>
 
          <h2>Conciertos registrados</h2>
         <p>Consulta los conciertos disponibles, artistas, recintos, ciudades y boletos registrados en el sistema.</p>
-        <button id="btn-cargar-productos">Ver conciertos</button>
+        <button id="btn-cargar-concierto">Ver conciertos</button>
       </div>
 
-      <div id="lista-productos" class="productos-grid"></div>
+      <div id="lista-conciertos" class="conciertos-grid"></div>
     </section>
 
     <section id="agregar" class="tab-content">
       <h2>Agregar concierto</h2>
       <p>Registra conciertos con artista, precio, recinto, ciudad y boletos disponibles.</p>
 
-      <form id="form-producto" class="formulario">
+      <form id="form-concierto" class="formulario">
         <label for="nombre">Artista</label>
         <input type="text" id="nombre" placeholder="Ejemplo: Shakira" required>
-         <input type="hidden" id="producto-id">
+         <input type="hidden" id="concierto-id">
 
         <label for="precio">Precio del boleto</label>
         <input type="number" id="precio" placeholder="Ejemplo: 1800" min="1" required>
@@ -98,7 +98,7 @@ Cancelar edición
         <input type="text" id="busqueda" placeholder="Ejemplo: Shakira o Estadio GNP">
       </div>
 
-      <div id="resultados-busqueda" class="productos-grid"></div>
+      <div id="resultados-busqueda" class="conciertos-grid"></div>
     </section>
 
     <section id="estadisticas" class="tab-content">
@@ -125,13 +125,13 @@ Cancelar edición
 
       <pre>
         app.js
-        controllers/productos.controller.js
-        data/productos.json
-        models/producto.model.js
+        controllers/conciertos.controller.js
+        data/conciertos.json
+        models/concierto.model.js
         public/index.html
         public/script.js
         public/style.css
-        routes/productos.routes.js
+        routes/conciertos.routes.js
       </pre>
     </section>
 
