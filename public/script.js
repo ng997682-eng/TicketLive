@@ -168,6 +168,36 @@ async function actualizarStock(id) {
     mensaje.className = "mensaje-error";
   }
 }
+//Función eliminar producto(id)
+async function eliminarProducto(id) {
+  const confirmar = confirm("¿Seguro que quieres eliminar este concierto?");
+
+  if (!confirmar) {
+    return;
+  }
+
+  try {
+    const respuesta = await fetch(`/productos/${id}`, {
+      method: "DELETE"
+    });
+
+    if (!respuesta.ok) {
+      const error = await respuesta.json();
+      throw new Error(error.mensaje || "No se pudo eliminar el concierto.");
+    }
+
+    mensaje.textContent = "Concierto eliminado correctamente.";
+    mensaje.className = "mensaje-exito";
+
+    await obtenerProductos();
+
+  } catch (error) {
+    mensaje.textContent = error.message;
+    mensaje.className = "mensaje-error";
+  }
+}
+
+
 
 
 //submit del formulario
