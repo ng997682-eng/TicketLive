@@ -291,7 +291,10 @@ button:hover {
   margin-top: 10px;
 }
 
-
+.dashboard-principal {
+  background: linear-gradient(135deg, #fff0f7, #ffe1ec);
+  border-left: 6px solid #b03060;
+}
 
 pre {
   background: #450427;

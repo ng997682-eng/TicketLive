@@ -337,9 +337,9 @@ const recintoMasUsado = Object.keys(conteoRecintos).reduce((a, b) =>
 resumenEstadisticas.innerHTML = `
   <h3 class="dashboard-titulo">Resumen general</h3>
 
-  <div class="estadistica">
-    <strong>Total de conciertos</strong>
-    <div class="numero-dashboard">${totalProductos}</div>
+  <div class="estadistica dashboard-principal">
+     <strong>Total de conciertos</strong>
+     <div class="numero-dashboard">${totalProductos}</div>
   </div>
 
   <div class="estadistica">
@@ -350,7 +350,7 @@ resumenEstadisticas.innerHTML = `
     <strong>Concierto con boleto más caro:</strong> ${productoMasCaro.nombre}
   </div>
 
-  <div class="estadistica">
+  <div class="estadistica dashboard-principal">
     <strong>Total de boletos disponibles</strong>
     <div class="numero-dashboard">${totalStock}</div>
   </div>
@@ -359,10 +359,10 @@ resumenEstadisticas.innerHTML = `
     <strong>Recinto con más conciertos:</strong> ${recintoMasUsado}
   </div>
 
-  <div class="estadistica">
-    <strong>Total de recintos registrados</strong>
-    <div class="numero-dashboard">
-    ${Object.keys(conteoRecintos).length}
+  <div class="estadistica dashboard-principal">
+     <strong>Total de recintos registrados</strong>
+     <div class="numero-dashboard">
+     ${Object.keys(conteoRecintos).length}
     </div>
   </div>
 
