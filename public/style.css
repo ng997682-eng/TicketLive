@@ -327,6 +327,9 @@ pre {
   border-radius: 12px;
   overflow-x: auto;
 }
+.estadistica:last-child {
+  grid-column: 1 / -1;
+}
 
 @media (max-width: 800px) {
   #resumen-estadisticas {
