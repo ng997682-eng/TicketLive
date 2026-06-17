@@ -169,10 +169,12 @@ btnBuscar.addEventListener("click", async () => {
   }
 
   const texto = busqueda.value.toLowerCase().trim();
+  
+  const filtrados = productos.filter(concierto => {
+  return concierto.nombre.toLowerCase().includes(texto) ||
+         concierto.categoria.toLowerCase().includes(texto);
+});
 
-  const filtrados = productos.filter(producto => {
-    return producto.nombre.toLowerCase().includes(texto) ||
-           producto.categoria.toLowerCase().includes(texto);
   });
 
   mostrarProductos(filtrados, resultadosBusqueda);
