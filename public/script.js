@@ -350,6 +350,7 @@ resumenEstadisticas.innerHTML = `
     <strong>Concierto con boleto más caro:</strong> ${productoMasCaro.nombre}
   </div>
 
+ <h3 class="dashboard-titulo">Detalles del sistema</h3> 
   <div class="estadistica dashboard-principal">
     <strong>Total de boletos disponibles</strong>
     <div class="numero-dashboard">${totalStock}</div>
