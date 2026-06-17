@@ -288,6 +288,10 @@ btnEstadisticas.addEventListener("click", async () => {
     return producto.precio > mayor.precio ? producto : mayor;
   }, productos[0]);
 
+  const conciertoMasBoletos = productos.reduce((mayor, concierto) => {
+  return concierto.stock > mayor.stock ? concierto : mayor;
+}, productos[0]);
+
   const totalStock = productos.reduce((suma, producto) => {
     return suma + producto.stock;
   }, 0);
@@ -346,6 +350,11 @@ mensaje.className = "mensaje-exito";
   <div class="estadistica">
     <strong>Recinto con más conciertos:</strong> ${recintoMasUsado}
   </div>
+
+  <div class="estadistica">
+    <strong>Concierto con más boletos disponibles:</strong>${conciertoMasBoletos.nombre}
+  </div>
+  
 `;
 });
 
