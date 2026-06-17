@@ -113,6 +113,63 @@ mensaje.className = "mensaje-exito";
 cambiarPestana("agregar");
 }
 
+//Función edtitar stock(id)
+async function actualizarStock(id) {
+  const producto = productos.find(p => p.id === id);
+
+  if (!producto) {
+    mensaje.textContent = "Concierto no encontrado.";
+    mensaje.className = "mensaje-error";
+    return;
+  }
+
+  const nuevoStock = prompt("Ingresa la nueva cantidad de boletos:", producto.stock);
+
+  if (nuevoStock === null) {
+    return;
+  }
+
+  const stockNumero = Number(nuevoStock);
+
+  if (isNaN(stockNumero) || stockNumero < 0) {
+    mensaje.textContent = "La cantidad de boletos debe ser un número válido.";
+    mensaje.className = "mensaje-error";
+    return;
+  }
+
+  const productoActualizado = {
+    nombre: producto.nombre,
+    precio: producto.precio,
+    categoria: producto.categoria,
+    stock: stockNumero
+  };
+
+  try {
+    const respuesta = await fetch(`/productos/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(productoActualizado)
+    });
+
+    if (!respuesta.ok) {
+      const error = await respuesta.json();
+      throw new Error(error.mensaje || "No se pudieron actualizar los boletos.");
+    }
+
+    mensaje.textContent = "Boletos actualizados correctamente.";
+    mensaje.className = "mensaje-exito";
+
+    await obtenerProductos();
+
+  } catch (error) {
+    mensaje.textContent = error.message;
+    mensaje.className = "mensaje-error";
+  }
+}
+
+
 //submit del formulario
 formProducto.addEventListener("submit", async event => {
   event.preventDefault();
