@@ -64,7 +64,8 @@ function mostrarProductos(lista, contenedor) {
     const tarjeta = document.createElement("article");
     tarjeta.classList.add("producto-card");
 
-    tarjeta.innerHTML = `
+  tarjeta.innerHTML = `
+
   <h3>${producto.nombre}</h3>
 
   <p><strong>Precio del boleto:</strong> $${producto.precio}</p>
@@ -96,8 +97,8 @@ function mostrarProductos(lista, contenedor) {
 function editarArtista(id) {
 const artista = artistas.find(p => p.id === id);
 
-if (!artista) {
-mensaje.textContent = "Artista no encontrado.";
+if (!producto) {
+mensaje.textContent = "Concierto no encontrado.";
 mensaje.className = "mensaje-error";
 return;
 }
@@ -106,8 +107,8 @@ document.getElementById("nombre").value = artista.nombre;
 document.getElementById("precio").value = artista.precio;
 document.getElementById("categoria").value = artista.categoria;
 document.getElementById("stock").value = artista.stock;
-btnGuardar.textContent = "Actualizar artista";
-mensaje.textContent = "Editando artista. Modifica los datos y guarda los cambios.";
+btnGuardar.textContent = "Actualizar concierto";
+mensaje.textContent = "Editando concierto. Modifica los datos y guarda los cambios.";
 mensaje.className = "mensaje-exito";
 cambiarPestana("agregar");
 }
@@ -142,9 +143,9 @@ formProducto.addEventListener("submit", async event => {
       throw new Error(error.mensaje || "No se pudo guardar el artista.");
     }
 
-    mensaje.textContent = id
-      ? "Artista actualizado correctamente."
-      : "Artista registrado correctamente.";
+  mensaje.textContent = id
+  ? "Concierto actualizado correctamente."
+  : "Concierto registrado correctamente.";
       
       
 
@@ -222,7 +223,7 @@ btnCancelarEdicion.addEventListener("click", cancelarEdicion);
 function cancelarEdicion() {
 formProducto.reset();
 productoId.value = "";
-btnGuardar.textContent = "Guardar artista";
+btnGuardar.textContent = "Guardar concierto";
 mensaje.textContent = "Edición cancelada.";
 mensaje.className = "mensaje-exito";
 }
