@@ -296,6 +296,20 @@ button:hover {
   border-left: 6px solid #b03060;
 }
 
+.dashboard-encabezado {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.dashboard-encabezado h2 {
+  color: #b03060;
+  margin-bottom: 8px;
+}
+
+.dashboard-encabezado p {
+  color: #666;
+}
+
 pre {
   background: #450427;
   color: white;
