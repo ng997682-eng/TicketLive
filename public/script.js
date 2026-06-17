@@ -169,7 +169,7 @@ btnBuscar.addEventListener("click", async () => {
   }
 
   const texto = busqueda.value.toLowerCase().trim();
-  
+
   const filtrados = productos.filter(concierto => {
   return concierto.nombre.toLowerCase().includes(texto) ||
          concierto.categoria.toLowerCase().includes(texto);
@@ -208,6 +208,18 @@ btnEstadisticas.addEventListener("click", async () => {
     return suma + producto.stock;
   }, 0);
 
+  const conteoRecintos = {};
+
+productos.forEach(concierto => {
+  conteoRecintos[concierto.categoria] =
+    (conteoRecintos[concierto.categoria] || 0) + 1;
+});
+
+const recintoMasUsado = Object.keys(conteoRecintos).reduce((a, b) =>
+  conteoRecintos[a] > conteoRecintos[b] ? a : b
+);
+
+
 async function editarProducto(id) {
     const respuesta = await fetch(`/productos/${id}`);
     const producto = await respuesta.json();
@@ -245,6 +257,10 @@ mensaje.className = "mensaje-exito";
 
   <div class="estadistica">
     <strong>Total de boletos disponibles:</strong> ${totalStock}
+  </div>
+
+  <div class="estadistica">
+    <strong>Recinto con más conciertos:</strong> ${recintoMasUsado}
   </div>
 `;
 });
