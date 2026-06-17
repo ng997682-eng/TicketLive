@@ -283,6 +283,8 @@ btnEstadisticas.addEventListener("click", async () => {
   }, 0);
 
   const precioPromedio = sumaPrecios / totalProductos;
+  const precioMasAlto = Math.max(...productos.map(concierto => concierto.precio));
+  const precioMasBajo = Math.min(...productos.map(concierto => concierto.precio));
 
   const productoMasCaro = productos.reduce((mayor, producto) => {
     return producto.precio > mayor.precio ? producto : mayor;
@@ -355,6 +357,13 @@ mensaje.className = "mensaje-exito";
     <strong>Concierto con más boletos disponibles:</strong>${conciertoMasBoletos.nombre}
   </div>
   
+  <div class="estadistica">
+    <strong>Boleto más caro:</strong> $${precioMasAlto}
+  </div>
+
+  <div class="estadistica">
+    <strong>Boleto más económico:</strong> $${precioMasBajo}
+  </div>
 `;
 });
 
