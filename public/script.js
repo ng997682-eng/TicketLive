@@ -74,16 +74,17 @@ function mostrarProductos(lista, contenedor) {
 <p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
 
 <button type="button" onclick="editarProducto(${producto.id})">
-Editar
+Editar artista
 </button>
 
 <button type="button" onclick="actualizarStock(${producto.id})">
-Actualizar stock
+Actualizar boletos
 </button>
 
 <button type="button" onclick="eliminarProducto(${producto.id})">
-Eliminar
+Eliminar artista
 </button>
+
 `;
 
     contenedor.appendChild(tarjeta);
@@ -92,20 +93,20 @@ Eliminar
 
 
 
-// 5. función editarProducto(id)
-function editarProducto(id) {
-const producto = productos.find(p => p.id === id);
+// 5. función Editar artista(id)
+function editarArtista(id) {
+const artista = artistas.find(p => p.id === id);
 
-if (!producto) {
+if (!artista) {
 mensaje.textContent = "Artista no encontrado.";
 mensaje.className = "mensaje-error";
 return;
 }
-productoId.value = producto.id;
-document.getElementById("nombre").value = producto.nombre;
-document.getElementById("precio").value = producto.precio;
-document.getElementById("categoria").value = producto.categoria;
-document.getElementById("stock").value = producto.stock;
+productoId.value = artista.id;
+document.getElementById("nombre").value = artista.nombre;
+document.getElementById("precio").value = artista.precio;
+document.getElementById("categoria").value = artista.categoria;
+document.getElementById("stock").value = artista.stock;
 btnGuardar.textContent = "Actualizar artista";
 mensaje.textContent = "Editando artista. Modifica los datos y guarda los cambios.";
 mensaje.className = "mensaje-exito";
