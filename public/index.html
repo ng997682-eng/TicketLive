@@ -16,7 +16,7 @@
   <nav class="tabs">
   <button class="tab active" data-tab="inicio">Inicio</button>
   <button class="tab" data-tab="productos">Artistas</button>
-  <button class="tab" data-tab="agregar">Agregar artista</button>
+  <button class="tab" data-tab="agregar">Agregar concierto</button>
   <button class="tab" data-tab="buscar">Buscar</button>
   <button class="tab" data-tab="estadisticas">Estadísticas</button>
   <button class="tab" data-tab="acerca">Acerca del sistema</button>
@@ -54,6 +54,7 @@
     <section id="productos" class="tab-content">
       <div class="titulo-seccion">
         <div>
+          
          <h2>Conciertos registrados</h2>
         <p>Consulta los conciertos disponibles, artistas, recintos, ciudades y boletos registrados en el sistema.</p>
         <button id="btn-cargar-productos">Ver cartel</button>
@@ -76,8 +77,10 @@
        
        <label for="categoria">Recinto y ciudad</label>
         <input type="text" id="categoria" placeholder="Ejemplo: Estadio GNP Seguros - Ciudad de México"
-       <label for="stock">Boletos disponibles</label>
-      <input type="number" id="stock" placeholder="Ejemplo: 5000" min="0" required>
+
+
+      <label for="stock">Boletos disponibles</label>
+       <input type="number" id="stock" placeholder="Ejemplo: 5000" min="0" required>
         
       <button type="submit" id="btn-guardar">Guardar producto</button>
       </form>
