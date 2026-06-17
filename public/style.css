@@ -9,19 +9,6 @@ body {
   color: #430720;
 }
 
-.banner-festival {
-  text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-  padding: 30px;
-  margin: 20px 0;
-  border-radius: 18px;
-  color: white;
-  background: linear-gradient(135deg, #c9184a, #ff4d6d, #ff8fab);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-
 .encabezado {
   background: linear-gradient(135deg, #d94f8a, #f7a8c8);
   color: white;
@@ -33,10 +20,6 @@ body {
 .encabezado h1 {
   margin: 0 0 8px 0;
   font-size: 2.2rem;
-}
-
-.encabezado p {
-  margin: 0;
 }
 
 .encabezado p {
@@ -101,6 +84,18 @@ body {
   flex-wrap: wrap;
 }
 
+.banner-festival {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 30px;
+  margin: 20px 0;
+  border-radius: 18px;
+  color: white;
+  background: linear-gradient(135deg, #c9184a, #ff4d6d, #ff8fab);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
 .panel-info {
   background: #fff3f8;
   border-left: 6px solid #d94f8a;
@@ -130,7 +125,6 @@ body {
   margin-top: 16px;
 }
 
-
 .producto-card {
   border: 1px solid #f3a6c9;
   border-radius: 16px;
@@ -153,6 +147,12 @@ body {
 
 .producto-card p {
   margin: 8px 0;
+}
+
+.producto-card button {
+  margin: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
 }
 
 .formulario {
@@ -181,7 +181,6 @@ input:focus {
   box-shadow: 0 0 8px rgba(217, 79, 138, 0.2);
 }
 
-
 button {
   padding: 8px 12px;
   border: none;
@@ -204,6 +203,30 @@ button:hover {
 
 .formulario button:hover {
   background: #a7657c;
+}
+
+.btn-editar {
+  background: #d94f8a;
+}
+
+.btn-editar:hover {
+  background: #c13d78;
+}
+
+.btn-stock {
+  background: #f39c12;
+}
+
+.btn-stock:hover {
+  background: #d68910;
+}
+
+.btn-eliminar {
+  background: #e74c3c;
+}
+
+.btn-eliminar:hover {
+  background: #c0392b;
 }
 
 .barra-busqueda {
@@ -238,64 +261,7 @@ button:hover {
   font-weight: bold;
 }
 
-.estadistica {
-  background: #fff0f7;
-  border: 1px solid #f3a6c9;
-  border-left: 6px solid #d94f8a;
-  padding: 18px;
-  margin: 12px 0;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(217, 79, 138, 0.14);
-  font-size: 16px;
-}
-
-.estadistica strong {
-  color: #b03060;
-}
-
-
-.btn-editar {
-  background: #d94f8a;
-}
-
-.btn-editar:hover {
-  background: #c13d78;
-}
-
-.btn-stock {
-  background: #f39c12;
-}
-
-.btn-stock:hover {
-  background: #d68910;
-}
-
-.btn-eliminar {
-  background: #e74c3c;
-}
-
-.btn-eliminar:hover {
-  background: #c0392b;
-}
-
-.dashboard-titulo {
-  grid-column: 1 / -1;
-  color: #b03060;
-  margin-bottom: 0;
-}
-
-.numero-dashboard {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #d94f8a;
-  margin-top: 10px;
-}
-
-.dashboard-principal {
-  background: linear-gradient(135deg, #fff0f7, #ffe1ec);
-  border-left: 6px solid #b03060;
-}
-
+/* DASHBOARD */
 .dashboard-encabezado {
   text-align: center;
   margin-bottom: 25px;
@@ -310,10 +276,31 @@ button:hover {
   color: #666;
 }
 
+#resumen-estadisticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
 .dashboard-titulo {
   grid-column: 1 / -1;
   color: #b03060;
   margin: 12px 0 0;
+}
+
+.estadistica {
+  background: linear-gradient(135deg, #fff0f7, #ffe1ec);
+  border: 1px solid #f3a6c9;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 16px rgba(217, 79, 138, 0.18);
+  min-height: 120px;
+  font-size: 16px;
+}
+
+.estadistica strong {
+  color: #b03060;
 }
 
 .dashboard-principal {
@@ -329,16 +316,8 @@ button:hover {
 .numero-dashboard {
   font-size: 2.3rem;
   font-weight: bold;
+  color: #d94f8a;
   margin-top: 12px;
-}
-
-
-pre {
-  background: #450427;
-  color: white;
-  padding: 16px;
-  border-radius: 12px;
-  overflow-x: auto;
 }
 
 pre {
@@ -364,25 +343,3 @@ pre {
     align-items: flex-start;
   }
 }
-
-.dashboard-titulo {
-  grid-column: 1 / -1;
-}
-
-.estadistica {
-  min-height: 120px;
-}
-
-
-  .titulo-seccion {
-    align-items: flex-start;
-  }
-
-.estadistica {
-  background: linear-gradient(135deg, #fff0f7, #ffe1ec);
-  border: 1px solid #f3a6c9;
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 6px 16px rgba(217, 79, 138, 0.18);
-  min-height: 120px;
- }
