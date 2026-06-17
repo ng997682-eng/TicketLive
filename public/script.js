@@ -65,26 +65,25 @@ function mostrarProductos(lista, contenedor) {
     tarjeta.classList.add("producto-card");
 
     tarjeta.innerHTML = `
-<h3>${producto.nombre}</h3>
+  <h3>${producto.nombre}</h3>
 
-<p><strong>Precio del boleto:</strong> $${producto.precio}</p>
+  <p><strong>Precio del boleto:</strong> $${producto.precio}</p>
 
-<p><strong>Día y escenario:</strong> ${producto.categoria}</p>
+  <p><strong>Recinto y ciudad:</strong> ${producto.categoria}</p>
 
-<p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
+  <p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
 
-<button type="button" onclick="editarProducto(${producto.id})">
-Editar artista
-</button>
+  <button type="button" onclick="editarProducto(${producto.id})">
+    Editar concierto
+  </button>
 
-<button type="button" onclick="actualizarStock(${producto.id})">
-Actualizar boletos
-</button>
+  <button type="button" onclick="actualizarStock(${producto.id})">
+    Actualizar boletos
+  </button>
 
-<button type="button" onclick="eliminarProducto(${producto.id})">
-Eliminar artista
-</button>
-
+  <button type="button" onclick="eliminarProducto(${producto.id})">
+    Eliminar concierto
+  </button>
 `;
 
     contenedor.appendChild(tarjeta);
