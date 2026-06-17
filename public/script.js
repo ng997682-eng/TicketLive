@@ -262,10 +262,11 @@ btnBuscar.addEventListener("click", async () => {
   }
 
   const texto = busqueda.value.toLowerCase().trim();
-
   const filtrados = productos.filter(concierto => {
-  return concierto.nombre.toLowerCase().includes(texto) ||
-         concierto.categoria.toLowerCase().includes(texto);
+  const nombre = concierto.nombre.toLowerCase().trim();
+  const categoria = concierto.categoria.toLowerCase().trim();
+
+  return nombre.includes(texto) || categoria.includes(texto);
 });
 
 mostrarProductos(filtrados, resultadosBusqueda);
