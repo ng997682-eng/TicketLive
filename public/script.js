@@ -66,11 +66,23 @@ function mostrarProductos(lista, contenedor) {
 
     tarjeta.innerHTML = `
 <h3>${producto.nombre}</h3>
-<p><strong>Precio:</strong> $${producto.precio}</p>
-<p><strong>Categoría:</strong> ${producto.categoria}</p>
-<p><strong>Stock:</strong> ${producto.stock}</p>
+
+<p><strong>Precio del boleto:</strong> $${producto.precio}</p>
+
+<p><strong>Día y escenario:</strong> ${producto.categoria}</p>
+
+<p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
+
 <button type="button" onclick="editarProducto(${producto.id})">
 Editar
+</button>
+
+<button type="button" onclick="actualizarStock(${producto.id})">
+Actualizar stock
+</button>
+
+<button type="button" onclick="eliminarProducto(${producto.id})">
+Eliminar
 </button>
 `;
 
