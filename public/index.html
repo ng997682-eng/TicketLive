@@ -10,83 +10,86 @@
 
   <header class="encabezado">
     <h1>MusicFest 2026</h1>
-    <p>Sistema web para gestionar artistas, presentaciones y boletos disponibles de conciertos.</p> 
-    </header>
+    <p>Sistema web para gestionar artistas, presentaciones y boletos disponibles de conciertos.</p>
+  </header>
 
   <nav class="tabs">
-  <button class="tab active" data-tab="inicio">Inicio</button>
-  <button class="tab" data-tab="conciertos">Conciertos</button>
-  <button class="tab" data-tab="agregar">Agregar concierto</button>
-  <button class="tab" data-tab="buscar">Buscar</button>
-  <button class="tab" data-tab="estadisticas">Estadísticas</button>
-  <button class="tab" data-tab="acerca">Acerca del sistema</button>
-</nav>
+    <button class="tab active" data-tab="inicio">Inicio</button>
+    <button class="tab" data-tab="productos">Conciertos</button>
+    <button class="tab" data-tab="agregar">Agregar concierto</button>
+    <button class="tab" data-tab="buscar">Buscar</button>
+    <button class="tab" data-tab="estadisticas">Estadísticas</button>
+    <button class="tab" data-tab="acerca">Acerca del sistema</button>
+  </nav>
 
-<main class="contenedor">
-<h2>Bienvenido al sistema de conciertos</h2>
+  <main class="contenedor">
 
-<p>
-  Esta aplicación permite administrar conciertos en diferentes ciudades y recintos.
-  El sistema facilita el registro, consulta, actualización y eliminación de conciertos,
-  así como la gestión de boletos disponibles.
-</p>
+    <section id="inicio" class="tab-content active">
+      <h2>Bienvenido al sistema de conciertos</h2>
 
-<div class="panel-info">
-  <h3>Funciones del sistema</h3>
-  <ul>
-    <li>Registrar conciertos.</li>
-    <li>Consultar conciertos disponibles.</li>
-    <li>Actualizar información de conciertos.</li>
-    <li>Eliminar registros.</li>
-    <li>Buscar por artista, recinto o ciudad.</li>
-    <li>Visualizar estadísticas de boletos y precios.</li>
-  </ul>
-</div>
-  </section>
+      <p>
+        Esta aplicación permite administrar conciertos en diferentes ciudades y recintos.
+        El sistema facilita el registro, consulta, actualización y eliminación de conciertos,
+        así como la gestión de boletos disponibles.
+      </p>
 
-  <h2>Bienvenido Sistema de conciertos</h2>
-  <div class="banner-festival">
-  🎤 Conciertos 🎸
-  <br>
-  Shakira • Dua Lipa • Maná • Caifanes • The Weeknd • Peso Pluma
-</div>
+      <div class="banner-festival">
+        🎤 Conciertos 🎸
+        <br>
+        Shakira • Dua Lipa • Maná • Caifanes • The Weeknd • Peso Pluma
+      </div>
 
-    <section id="concierto" class="tab-content">
+      <div class="panel-info">
+        <h3>Funciones del sistema</h3>
+        <ul>
+          <li>Registrar conciertos.</li>
+          <li>Consultar conciertos disponibles.</li>
+          <li>Actualizar información de conciertos.</li>
+          <li>Eliminar registros.</li>
+          <li>Buscar por artista, recinto o ciudad.</li>
+          <li>Visualizar estadísticas de boletos y precios.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="productos" class="tab-content">
       <div class="titulo-seccion">
         <div>
+          <h2>Conciertos registrados</h2>
+          <p>Consulta los conciertos disponibles, artistas, recintos, ciudades y boletos registrados en el sistema.</p>
+        </div>
 
-         <h2>Conciertos registrados</h2>
-        <p>Consulta los conciertos disponibles, artistas, recintos, ciudades y boletos registrados en el sistema.</p>
         <button id="btn-cargar-productos">Ver conciertos</button>
       </div>
 
-      <div id="lista-conciertos" class="conciertos-grid"></div>
+      <div id="lista-productos" class="productos-grid"></div>
     </section>
 
     <section id="agregar" class="tab-content">
       <h2>Agregar concierto</h2>
       <p>Registra conciertos con artista, precio, recinto, ciudad y boletos disponibles.</p>
 
-      <form id="form-concierto" class="formulario">
+      <form id="form-producto" class="formulario">
+        <input type="hidden" id="producto-id">
+
         <label for="nombre">Artista</label>
         <input type="text" id="nombre" placeholder="Ejemplo: Shakira" required>
-         <input type="hidden" id="concierto-id">
 
         <label for="precio">Precio del boleto</label>
         <input type="number" id="precio" placeholder="Ejemplo: 1800" min="1" required>
-       
-       <label for="categoria">Recinto y ciudad</label>
-        <input type="text" id="categoria" placeholder="Ejemplo: Estadio GNP Seguros - Ciudad de México"
 
+        <label for="categoria">Recinto y ciudad</label>
+        <input type="text" id="categoria" placeholder="Ejemplo: Estadio GNP Seguros - Ciudad de México" required>
 
-      <label for="stock">Boletos disponibles</label>
-       <input type="number" id="stock" placeholder="Ejemplo: 5000" min="0" required>
-        
-      <button type="submit" id="btn-guardar">Guardar concierto</button>
+        <label for="stock">Boletos disponibles</label>
+        <input type="number" id="stock" placeholder="Ejemplo: 5000" min="0" required>
+
+        <button type="submit" id="btn-guardar">Guardar concierto</button>
       </form>
+
       <button type="button" id="btn-cancelar-edicion">
-Cancelar edición
-</button>
+        Cancelar edición
+      </button>
 
       <p id="mensaje"></p>
     </section>
@@ -94,19 +97,23 @@ Cancelar edición
     <section id="buscar" class="tab-content">
       <h2>Buscar concierto</h2>
       <p>Busca conciertos por artista, recinto o ciudad.</p>
+
       <div class="barra-busqueda">
         <input type="text" id="busqueda" placeholder="Ejemplo: Shakira o Estadio GNP">
+        <button id="btn-buscar">Buscar</button>
       </div>
 
-      <div id="resultados-busqueda" class="conciertos-grid"></div>
+      <div id="resultados-busqueda" class="productos-grid"></div>
     </section>
 
     <section id="estadisticas" class="tab-content">
       <div class="titulo-seccion">
         <div>
           <h2>Estadísticas de conciertos</h2>
-           <p>Consulta información general sobre conciertos, precios y boletos disponibles.</p>
-           <button id="btn-estadisticas">Ver estadísticas</button>
+          <p>Consulta información general sobre conciertos, precios y boletos disponibles.</p>
+        </div>
+
+        <button id="btn-estadisticas">Ver estadísticas</button>
       </div>
 
       <div id="resumen-estadisticas"></div>
@@ -114,24 +121,23 @@ Cancelar edición
 
     <section id="acerca" class="tab-content">
       <h2>Acerca del sistema de conciertos</h2>
+
       <p>
-        <p>
-         Esta aplicación web permite gestionar conciertos independientes en distintas
-         ciudades y recintos. El sistema permite registrar, consultar, actualizar y
-         eliminar conciertos, además de buscar información y consultar estadísticas
-         sobre precios y boletos disponibles.
-</p>
+        Esta aplicación web permite gestionar conciertos independientes en distintas
+        ciudades y recintos. El sistema permite registrar, consultar, actualizar y
+        eliminar conciertos, además de buscar información y consultar estadísticas
+        sobre precios y boletos disponibles.
       </p>
 
       <pre>
-        app.js
-        controllers/conciertos.controller.js
-        data/conciertos.json
-        models/concierto.model.js
-        public/index.html
-        public/script.js
-        public/style.css
-        routes/conciertos.routes.js
+app.js
+controllers/productos.controller.js
+data/productos.json
+models/producto.model.js
+public/index.html
+public/script.js
+public/style.css
+routes/productos.routes.js
       </pre>
     </section>
 
