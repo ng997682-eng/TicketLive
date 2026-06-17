@@ -21,15 +21,22 @@ const btnCancelarEdicion = document.getElementById("btn-cancelar-edicion");
 let productos = [];
 
 // 2. Navegación por pestañas
+function cambiarPestana(idContenido) {
+  tabs.forEach(t => t.classList.remove("active"));
+  contenidos.forEach(c => c.classList.remove("active"));
+
+  const tabSeleccionada = document.querySelector(`[data-tab="${idContenido}"]`);
+  const contenidoSeleccionado = document.getElementById(idContenido);
+
+  if (tabSeleccionada && contenidoSeleccionado) {
+    tabSeleccionada.classList.add("active");
+    contenidoSeleccionado.classList.add("active");
+  }
+}
+
 tabs.forEach(tab => {
   tab.addEventListener("click", () => {
-    tabs.forEach(t => t.classList.remove("active"));
-    contenidos.forEach(c => c.classList.remove("active"));
-
-    tab.classList.add("active");
-
-    const idContenido = tab.dataset.tab;
-    document.getElementById(idContenido).classList.add("active");
+    cambiarPestana(tab.dataset.tab);
   });
 });
 
