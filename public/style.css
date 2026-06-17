@@ -148,14 +148,23 @@ body {
 
 label {
   font-weight: bold;
+  color: #b03060;
 }
 
 input {
-  padding: 10px;
-  border: 1px solid #bbb;
-  border-radius: 8px;
+  padding: 12px;
+  border: 2px solid #f3bfd4;
+  border-radius: 10px;
   width: 100%;
+  transition: all 0.2s ease;
 }
+
+input:focus {
+  outline: none;
+  border-color: #d94f8a;
+  box-shadow: 0 0 8px rgba(217, 79, 138, 0.2);
+}
+
 
 button {
   padding: 8px 12px;
