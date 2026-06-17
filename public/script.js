@@ -338,7 +338,8 @@ resumenEstadisticas.innerHTML = `
   <h3 class="dashboard-titulo">Resumen general</h3>
 
   <div class="estadistica">
-    <strong>Total de conciertos:</strong> ${totalProductos}
+    <strong>Total de conciertos</strong>
+    <div class="numero-dashboard">${totalProductos}</div>
   </div>
 
   <div class="estadistica">
@@ -350,7 +351,8 @@ resumenEstadisticas.innerHTML = `
   </div>
 
   <div class="estadistica">
-    <strong>Total de boletos disponibles:</strong> ${totalStock}
+    <strong>Total de boletos disponibles</strong>
+    <div class="numero-dashboard">${totalStock}</div>
   </div>
 
   <div class="estadistica">
@@ -358,8 +360,10 @@ resumenEstadisticas.innerHTML = `
   </div>
 
   <div class="estadistica">
-    <strong>Total de recintos registrados:</strong>
-     ${Object.keys(conteoRecintos).length}
+    <strong>Total de recintos registrados</strong>
+    <div class="numero-dashboard">
+    ${Object.keys(conteoRecintos).length}
+    </div>
   </div>
 
   <div class="estadistica">
