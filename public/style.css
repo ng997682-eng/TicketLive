@@ -285,6 +285,11 @@ button:hover {
   background: #b03060;
 }
 
+#btn-cancelar-edicion {
+  display: block;
+  margin: 15px auto;
+}
+
 @media (max-width: 1200px) {
   .productos-grid {
     grid-template-columns: repeat(3, 1fr);
