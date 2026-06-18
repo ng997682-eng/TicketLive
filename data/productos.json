@@ -222,5 +222,13 @@
     "categoria": "Arena CDMX - Ciudad de México",
     "stock": 22300,
     "imagen": "https://i.pinimg.com/1200x/01/cf/f9/01cff99784d49ce03d9262970e24e243.jpg"
+  },
+  {
+    "id": 29,
+    "nombre": "BTS",
+    "precio": 8000,
+    "categoria": "Estadio Azteca - Ciudad de México",
+    "stock": 83264,
+    "imagen": "https://i.pinimg.com/736x/18/d7/8b/18d78b48e97200585744aa7feb5698bf.jpg"
   }
 ]
