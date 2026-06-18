@@ -79,7 +79,7 @@ function mostrarProductos(lista, contenedor) {
     tarjeta.classList.add("producto-card");
 
   tarjeta.innerHTML = `
-  <img src="${producto.imagen}" alt="${producto.nombre}" class="img-concierto">
+  <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-concierto">
 
 
   <h3>${producto.nombre}</h3>
@@ -123,7 +123,7 @@ document.getElementById("nombre").value = producto.nombre;
 document.getElementById("precio").value = producto.precio;
 document.getElementById("categoria").value = producto.categoria;
 document.getElementById("stock").value = producto.stock;
-document.getElementById("imagen").value = producto.imagen;
+document.getElementById("imagen").value = producto.imagen || "";
 btnGuardar.textContent = "Actualizar concierto";
 mensaje.textContent = "Editando concierto. Modifica los datos y guarda los cambios.";
 mensaje.className = "mensaje-exito";

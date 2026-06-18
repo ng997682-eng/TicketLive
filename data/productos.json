@@ -205,6 +205,13 @@
     "precio": 10000,
     "categoria": "Estadio GNP Seguros -Ciudad de Mexico",
     "stock": 65000,
-     "imagen": "https://i.pinimg.com/1200x/85/b2/a9/85b2a902b8c76827b1a00c5b568b0ca8.jpg"
+    "imagen": "https://i.pinimg.com/1200x/85/b2/a9/85b2a902b8c76827b1a00c5b568b0ca8.jpg"
+  },
+  {
+    "id": 27,
+    "nombre": "Post Malone",
+    "precio": 5500,
+    "categoria": "Palacio de los Deportes -Ciudad de México",
+    "stock": 20000
   }
 ]
