@@ -178,17 +178,17 @@ label {
 }
 
 input {
-  input {
   padding: 16px;
   font-size: 16px;
   border: 2px solid #f3bfd4;
   border-radius: 10px;
   width: 100%;
   transition: all 0.2s ease;
-  #agregar h2,
-  #agregar p {
-  text-align: center;
 }
+
+#agregar h2,
+#agregar p {
+  text-align: center;
 }
 
 input:focus {
@@ -371,6 +371,30 @@ pre {
   grid-column: 1 / -1;
 }
 
+.btn-editar {
+  background-color: #d94f8a;
+}
+
+.btn-editar:hover {
+  background-color: #c13d78;
+}
+
+.btn-stock {
+  background-color: #f39c12;
+}
+
+.btn-stock:hover {
+  background-color: #d68910;
+}
+
+.btn-eliminar {
+  background-color: #e74c3c;
+}
+
+.btn-eliminar:hover {
+  background-color: #c0392b;
+}
+
 @media (max-width: 800px) {
   #resumen-estadisticas {
     grid-template-columns: 1fr;
@@ -385,28 +409,4 @@ pre {
   .titulo-seccion {
     align-items: flex-start;
   }
-
-  .btn-editar {
-  background: #d94f8a;
-}
-
-.btn-editar:hover {
-  background: #c13d78;
-}
-
-.btn-stock {
-  background: #f39c12;
-}
-
-.btn-stock:hover {
-  background: #d68910;
-}
-
-.btn-eliminar {
-  background: #e74c3c;
-}
-
-.btn-eliminar:hover {
-  background: #c0392b;
-}
 }
