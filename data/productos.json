@@ -198,5 +198,13 @@
     "categoria": "Estadio GNP Seguros - Ciudad de México",
     "stock": 5600,
     "imagen": "https://i.pinimg.com/736x/ef/25/94/ef25946382572e99f07afd4104734788.jpg"
+  },
+  {
+    "id": 26,
+    "nombre": "Taylor Swift",
+    "precio": 10000,
+    "categoria": "Estadio GNP Seguros -Ciudad de Mexico",
+    "stock": 65000,
+     "imagen": "https://i.pinimg.com/1200x/85/b2/a9/85b2a902b8c76827b1a00c5b568b0ca8.jpg"
   }
 ]

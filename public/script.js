@@ -222,12 +222,12 @@ formProducto.addEventListener("submit", async event => {
   const id = productoId.value;
 
   const producto = {
-    nombre: document.getElementById("nombre").value,
-    precio: Number(document.getElementById("precio").value),
-    categoria: document.getElementById("categoria").value,
-    stock: Number(document.getElementById("stock").value),
-    imagen: document.getElementById("imagen").value
-  };
+  nombre: document.getElementById("nombre").value,
+  precio: Number(document.getElementById("precio").value),
+  categoria: document.getElementById("categoria").value,
+  stock: Number(document.getElementById("stock").value),
+  imagen: document.getElementById("imagen").value
+};
 
   const url = id ? `/productos/${id}` : "/productos";
   const metodo = id ? "PUT" : "POST";
