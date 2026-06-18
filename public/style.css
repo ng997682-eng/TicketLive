@@ -130,7 +130,7 @@ body {
   border-radius: 16px;
   padding: 16px;
   background: #fff0f7;
-  box-shadow: 0 4px 12px rgba(196, 80, 130, 0.15);
+  box-shadow: 0 6px 15px rgba(196, 80, 130, 0.15);
   transition: transform 0.2s ease;
   overflow: hidden;
 }
