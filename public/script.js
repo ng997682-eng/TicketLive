@@ -123,6 +123,7 @@ document.getElementById("nombre").value = producto.nombre;
 document.getElementById("precio").value = producto.precio;
 document.getElementById("categoria").value = producto.categoria;
 document.getElementById("stock").value = producto.stock;
+document.getElementById("imagen").value = producto.imagen;
 btnGuardar.textContent = "Actualizar concierto";
 mensaje.textContent = "Editando concierto. Modifica los datos y guarda los cambios.";
 mensaje.className = "mensaje-exito";
@@ -224,7 +225,8 @@ formProducto.addEventListener("submit", async event => {
     nombre: document.getElementById("nombre").value,
     precio: Number(document.getElementById("precio").value),
     categoria: document.getElementById("categoria").value,
-    stock: Number(document.getElementById("stock").value)
+    stock: Number(document.getElementById("stock").value),
+    imagen: document.getElementById("imagen").value
   };
 
   const url = id ? `/productos/${id}` : "/productos";
