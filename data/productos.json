@@ -212,6 +212,15 @@
     "nombre": "Post Malone",
     "precio": 5500,
     "categoria": "Palacio de los Deportes -Ciudad de México",
-    "stock": 20000
+    "stock": 20000,
+    "imagen": "https://i.pinimg.com/736x/92/64/77/9264776a2a97eb8837e20f43f9e35e17.jpg"
+  },
+  {
+    "id": 28,
+    "nombre": "Ariana Grande",
+    "precio": 7000,
+    "categoria": "Arena CDMX - Ciudad de México",
+    "stock": 22300,
+    "imagen": "https://i.pinimg.com/1200x/01/cf/f9/01cff99784d49ce03d9262970e24e243.jpg"
   }
 ]

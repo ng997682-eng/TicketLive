@@ -34,11 +34,12 @@ function crearProducto(req, res) {
   }
 
   const nuevoProducto = Producto.crear({
-    nombre,
-    precio: Number(precio),
-    categoria,
-    stock: Number(stock)
-  });
+  nombre,
+  precio: Number(precio),
+  categoria,
+  stock: Number(stock),
+  imagen
+});
 
   res.status(201).json(nuevoProducto);
 }
