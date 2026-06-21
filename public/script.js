@@ -81,27 +81,13 @@ function mostrarProductos(lista, contenedor) {
   tarjeta.innerHTML = `
   <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-concierto">
 
-
   <h3>${producto.nombre}</h3>
 
-  <p><strong>Precio del boleto:</strong> $${producto.precio}</p>
-
-  <p><strong>Recinto y ciudad:</strong> ${producto.categoria}</p>
-
-  <p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
-
-<button class="btn-editar" type="button" onclick="editarProducto(${producto.id})">
-  Editar concierto
-</button>
-
-<button class="btn-stock" type="button" onclick="actualizarStock(${producto.id})">
-  Actualizar boletos
-</button>
-
-<button class="btn-eliminar" type="button" onclick="eliminarProducto(${producto.id})">
-  Eliminar concierto
-</button>
+  <button type="button" onclick="verInformacion(${producto.id})">
+    Ver información
+  </button>
 `;
+
 
     contenedor.appendChild(tarjeta);
   });
