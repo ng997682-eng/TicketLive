@@ -426,13 +426,17 @@ pre {
 }
 
 .detalle-concierto {
-  max-width: 720px;
-  margin: 35px auto;
-  padding: 28px;
+  width: 900px;
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 30px;
   background: #fff0f7;
-  border-radius: 26px;
-  box-shadow: 0 10px 30px rgba(176, 48, 96, 0.22);
-  text-align: center;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .detalle-concierto h2 {
@@ -443,26 +447,24 @@ pre {
 
 .img-detalle {
   width: 100%;
-  height: 540px;
+  max-width: 650px;
+  height: 450px;
   object-fit: cover;
-  border-radius: 22px;
-  margin-bottom: 22px;
+  border-radius: 20px;
+  margin: 20px 0;
 }
 
-.detalle-concierto p {
-  font-size: 1.1rem;
-  margin: 10px 0;
+..detalle-concierto p {
+  font-size: 18px;
+  margin: 8px 0;
+  text-align: center;
 }
 
 .detalle-concierto .btn-editar,
 .detalle-concierto .btn-stock,
 .detalle-concierto .btn-eliminar {
-  display: block;
-  width: 280px;
-  margin: 12px auto;
-  padding: 12px 18px;
-  border-radius: 25px;
-  font-size: 1rem;
+  width: 260px;
+  margin: 10px 0;
 }
 
 .btn-regresar {
