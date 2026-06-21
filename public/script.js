@@ -260,7 +260,7 @@ formProducto.addEventListener("submit", async event => {
 
   const id = productoId.value;
 
- const producto = {
+const producto = {
   nombre: document.getElementById("nombre").value,
   precio: Number(document.getElementById("precio").value),
   fecha: document.getElementById("fecha").value,
