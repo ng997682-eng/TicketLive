@@ -124,6 +124,10 @@ function verInformacion(id) {
         Actualizar boletos
       </button>
 
+      <button class="btn-info" type="button" onclick="verInformacion(${producto.id})">
+          Ver información
+      </button>
+
       <button class="btn-eliminar" type="button" onclick="eliminarProducto(${producto.id})">
         Eliminar concierto
       </button>

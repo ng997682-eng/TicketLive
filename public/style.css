@@ -475,3 +475,15 @@ pre {
 .btn-regresar:hover {
   background: #8e254c;
 }
+
+.btn-info {
+  background-color: #b03060;
+  display: block;
+  width: fit-content;
+  margin: 12px auto 0 auto;
+  padding: 8px 16px;
+}
+
+.btn-info:hover {
+  background-color: #8e254c;
+}
