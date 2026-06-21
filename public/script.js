@@ -22,6 +22,8 @@ const productoId = document.getElementById("producto-id");
 const btnGuardar = document.getElementById("btn-guardar");
 const btnCancelarEdicion = document.getElementById("btn-cancelar-edicion");
 
+const encabezadoConciertos = document.getElementById("encabezado-conciertos");
+
 let productos = [];
 
 // 2. Navegación por pestañas
@@ -103,14 +105,14 @@ function verInformacion(id) {
   }
 
   listaProductos.classList.add("vista-detalle");
-
+  encabezadoConciertos.style.display = "none";
   listaProductos.innerHTML = `
     <article class="detalle-concierto">
       <h2>${producto.nombre}</h2>
 
       <div class="detalle-contenido">
         <div class="detalle-botones">
-          <button type="button" class="btn-regresar" onclick="listaProductos.classList.remove('vista-detalle'); mostrarProductos(productos, listaProductos)">
+          <button type="button" class="btn-regresar" onclick="listaProductos.classList.remove('vista-detalle'); encabezadoConciertos.style.display='block'; mostrarProductos(productos, listaProductos)"
             ← Regresar
           </button>
 

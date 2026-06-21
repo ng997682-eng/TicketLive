@@ -953,3 +953,8 @@ pre {
   font-size: 15px;
 }
 
+.vista-detalle .btn-regresar {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}

@@ -2,11 +2,11 @@
   {
     "id": 1,
     "nombre": "Shakira",
-    "precio": 7500,
+    "precio": 3500,
     "fecha": "2026-06-17",
     "recinto": "Estadio GNP Seguros",
     "ciudad": "Ciudad de Monterrey ",
-    "stock": 65000,
+    "stock": 10500,
     "imagen": "https://telemax.com.mx/wp-content/uploads/2025/03/shakira.png"
   },
   {
@@ -43,8 +43,10 @@
     "id": 5,
     "nombre": "Caifanes",
     "precio": 1900,
-    "categoria": "Estadio Ciudad de los Deportes - Ciudad de México",
-    "stock": 4100,
+    "fecha": "2026-07-16",
+    "recinto": "Estadio GNP Seguros",
+    "ciudad": "Ciudad de Mexico",
+    "stock": 65000,
     "imagen": "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/56QOV42AZBDGBIM5CPJCMPXNUQ.jpg"
   },
   {
