@@ -81,8 +81,7 @@ function mostrarProductos(lista, contenedor) {
   tarjeta.innerHTML = `
   <h3>${producto.nombre}</h3>
   <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-concierto">
-  <p><strong>Recinto y ciudad:</strong> ${producto.categoria}</p>
-
+  
   <button type="button" onclick="verInformacion(${producto.id})">
     Ver información
   </button>
@@ -144,7 +143,8 @@ return;
 productoId.value = producto.id;
 document.getElementById("nombre").value = producto.nombre;
 document.getElementById("precio").value = producto.precio;
-document.getElementById("categoria").value = producto.categoria;
+document.getElementById("recinto").value = producto.recinto || "";
+document.getElementById("ciudad").value = producto.ciudad || "";
 document.getElementById("stock").value = producto.stock;
 document.getElementById("imagen").value = producto.imagen || "";
 btnGuardar.textContent = "Actualizar concierto";
@@ -244,10 +244,11 @@ formProducto.addEventListener("submit", async event => {
 
   const id = productoId.value;
 
-  const producto = {
+ const producto = {
   nombre: document.getElementById("nombre").value,
   precio: Number(document.getElementById("precio").value),
-  categoria: document.getElementById("categoria").value,
+  recinto: document.getElementById("recinto").value,
+  ciudad: document.getElementById("ciudad").value,
   stock: Number(document.getElementById("stock").value),
   imagen: document.getElementById("imagen").value
 };
@@ -298,9 +299,12 @@ btnBuscar.addEventListener("click", async () => {
 
 const filtrados = productos.filter(concierto => {
   const nombre = concierto.nombre.toLowerCase().trim();
-  const categoria = concierto.categoria.toLowerCase().trim();
+  const recinto = (concierto.recinto || "").toLowerCase().trim();
+  const ciudad = (concierto.ciudad || "").toLowerCase().trim();
 
-  return nombre.includes(texto) || categoria.includes(texto);
+  return nombre.includes(texto) ||
+         recinto.includes(texto) ||
+         ciudad.includes(texto);
 });
 
 mostrarProductos(filtrados, resultadosBusqueda);
@@ -343,18 +347,16 @@ btnEstadisticas.addEventListener("click", async () => {
   const conteoRecintos = {};
 
 productos.forEach(concierto => {
-  conteoRecintos[concierto.categoria] =
-    (conteoRecintos[concierto.categoria] || 0) + 1;
+  conteoRecintos[concierto.recinto] =
+    (conteoRecintos[concierto.recinto] || 0) + 1;
 });
 
 const conteoCiudades = {};
 
 productos.forEach(concierto => {
-  const partes = concierto.categoria.split(" - ");
+  const ciudad = concierto.ciudad;
 
-  if (partes.length > 1) {
-    const ciudad = partes[1];
-
+  if (ciudad) {
     conteoCiudades[ciudad] =
       (conteoCiudades[ciudad] || 0) + 1;
   }
