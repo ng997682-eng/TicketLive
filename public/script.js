@@ -82,9 +82,9 @@ function mostrarProductos(lista, contenedor) {
   <h3>${producto.nombre}</h3>
   <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-concierto">
   
-  <button type="button" onclick="verInformacion(${producto.id})">
-    Ver información
-  </button>
+  <button class="btn-info" type="button" onclick="verInformacion(${producto.id})">
+  Ver información
+</button>
 `;
 
 
@@ -122,10 +122,6 @@ function verInformacion(id) {
 
       <button class="btn-stock" type="button" onclick="actualizarStock(${producto.id})">
         Actualizar boletos
-      </button>
-
-      <button class="btn-info" type="button" onclick="verInformacion(${producto.id})">
-          Ver información
       </button>
 
       <button class="btn-eliminar" type="button" onclick="eliminarProducto(${producto.id})">
