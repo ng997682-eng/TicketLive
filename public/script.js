@@ -106,29 +106,37 @@ function verInformacion(id) {
 
   listaProductos.innerHTML = `
     <article class="detalle-concierto">
-      <button type="button" class="btn-regresar" onclick="listaProductos.classList.remove('vista-detalle'); mostrarProductos(productos, listaProductos)"
-        ← Regresar
-      </button>
-
       <h2>${producto.nombre}</h2>
-      <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-detalle">
 
-      <p><strong>Precio del boleto:</strong> $${producto.precio}</p>
-      <p><strong>Recinto:</strong> ${producto.recinto}</p>
-      <p><strong>Ciudad:</strong> ${producto.ciudad}</p>
-      <p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
+      <div class="detalle-contenido">
+        <div class="detalle-botones">
+          <button type="button" class="btn-regresar" onclick="listaProductos.classList.remove('vista-detalle'); mostrarProductos(productos, listaProductos)">
+            ← Regresar
+          </button>
 
-      <button class="btn-editar" type="button" onclick="editarProducto(${producto.id})">
-        Editar concierto
-      </button>
+          <button class="btn-editar" type="button" onclick="editarProducto(${producto.id})">
+            Editar concierto
+          </button>
 
-      <button class="btn-stock" type="button" onclick="actualizarStock(${producto.id})">
-        Actualizar boletos
-      </button>
+          <button class="btn-stock" type="button" onclick="actualizarStock(${producto.id})">
+            Actualizar boletos
+          </button>
 
-      <button class="btn-eliminar" type="button" onclick="eliminarProducto(${producto.id})">
-        Eliminar concierto
-      </button>
+          <button class="btn-eliminar" type="button" onclick="eliminarProducto(${producto.id})">
+            Eliminar concierto
+          </button>
+        </div>
+
+        <div class="detalle-info">
+          <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-detalle">
+
+          <p><strong>Precio del boleto:</strong> $${producto.precio}</p>
+          <p><strong>Fecha:</strong> ${producto.fecha || "No registrada"}</p>
+          <p><strong>Recinto:</strong> ${producto.recinto || "No registrado"}</p>
+          <p><strong>Ciudad:</strong> ${producto.ciudad || "No registrada"}</p>
+          <p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
+        </div>
+      </div>
     </article>
   `;
 }
