@@ -83,8 +83,8 @@ function mostrarProductos(lista, contenedor) {
   <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-concierto">
   
   <button class="btn-info" type="button" onclick="verInformacion(${producto.id})">
-  Ver información
-</button>
+    Ver información
+  </button>
 `;
 
 
