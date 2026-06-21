@@ -32,9 +32,11 @@
   {
     "id": 4,
     "nombre": "Maná",
-    "precio": 2500,
-    "categoria": "Estadio BBVA - Monterrey",
-    "stock": 5200,
+    "precio": 950,
+    "fecha": "2026-07-21",
+    "recinto": "Estadio de Béisbol \"Hermanos Serdán\"",
+    "ciudad": "Puebla",
+    "stock": 9723,
     "imagen": "https://i.pinimg.com/1200x/79/e7/4b/79e74b217f6f1cfeaf91996fa67f5355.jpg"
   },
   {

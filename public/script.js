@@ -161,9 +161,9 @@ document.getElementById("stock").value = producto.stock;
 btnGuardar.textContent = "Actualizar concierto";
 mensaje.textContent = "Editando concierto. Modifica los datos y guarda los cambios.";
 mensaje.className = "mensaje-exito";
+listaProductos.classList.remove("vista-detalle");
 cambiarPestana("agregar");
 }
-
 //Función edtitar stock(id)
 async function actualizarStock(id) {
   const producto = productos.find(p => p.id === id);
@@ -295,10 +295,14 @@ formProducto.addEventListener("submit", async event => {
     formProducto.reset();
     productoId.value = "";
     btnGuardar.textContent = "Guardar concierto";
-    await obtenerProductos();
-    cambiarPestana("productos");
 
-  } catch (error) {
+listaProductos.classList.remove("vista-detalle");
+
+await obtenerProductos();
+cambiarPestana("productos");
+
+  } 
+  catch (error) {
     mensaje.textContent = error.message;
     mensaje.className = "mensaje-error";
   }
