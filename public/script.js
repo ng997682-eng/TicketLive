@@ -93,7 +93,44 @@ function mostrarProductos(lista, contenedor) {
   });
 }
 
+// ver info del artista
+function verInformacion(id) {
+  const producto = productos.find(p => p.id === id);
 
+  if (!producto) {
+    mensaje.textContent = "Concierto no encontrado.";
+    mensaje.className = "mensaje-error";
+    return;
+  }
+
+  listaProductos.innerHTML = `
+    <article class="detalle-concierto">
+      <button type="button" class="btn-regresar" onclick="mostrarProductos(productos, listaProductos)">
+        ← Regresar
+      </button>
+
+      <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-detalle">
+
+      <h2>${producto.nombre}</h2>
+
+      <p><strong>Precio del boleto:</strong> $${producto.precio}</p>
+      <p><strong>Recinto y ciudad:</strong> ${producto.categoria}</p>
+      <p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
+
+      <button class="btn-editar" type="button" onclick="editarProducto(${producto.id})">
+        Editar concierto
+      </button>
+
+      <button class="btn-stock" type="button" onclick="actualizarStock(${producto.id})">
+        Actualizar boletos
+      </button>
+
+      <button class="btn-eliminar" type="button" onclick="eliminarProducto(${producto.id})">
+        Eliminar concierto
+      </button>
+    </article>
+  `;
+}
 
 // 5. función Editar artista(id)
 function editarProducto(id) {
