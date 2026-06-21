@@ -132,7 +132,9 @@ function verInformacion(id) {
         <div class="detalle-info">
           <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-detalle">
 
-          <p><strong>Precio del boleto:</strong> $${producto.precio}</p>
+          <p><strong>General:</strong> $${producto.precios?.general || producto.precio}</p>
+          <p><strong>Preferente:</strong> $${producto.precios?.preferente || producto.precio}</p>
+          <p><strong>VIP:</strong> $${producto.precios?.vip || producto.precio}</p>
           <p><strong>Fecha:</strong> ${producto.fecha || "No registrada"}</p>
           <p><strong>Recinto:</strong> ${producto.recinto || "No registrado"}</p>
           <p><strong>Ciudad:</strong> ${producto.ciudad || "No registrada"}</p>
@@ -154,7 +156,7 @@ return;
 }
 productoId.value = producto.id;
 document.getElementById("nombre").value = producto.nombre;
-document.getElementById("precio").value = producto.precio;
+document.getElementById("precio").value = producto.precios?.general || producto.precio;
 document.getElementById("fecha").value = producto.fecha || "";
 document.getElementById("recinto").value = producto.recinto || "";
 document.getElementById("ciudad").value = producto.ciudad || "";
@@ -192,7 +194,9 @@ async function actualizarStock(id) {
 
   const productoActualizado = {
   nombre: producto.nombre,
-  precio: producto.precio,
+  precios: {
+    general: producto.precios?.general || producto.precio
+  },
   fecha: producto.fecha || "",
   recinto: producto.recinto || "",
   ciudad: producto.ciudad || "",
@@ -262,7 +266,9 @@ formProducto.addEventListener("submit", async event => {
 
 const producto = {
   nombre: document.getElementById("nombre").value,
-  precio: Number(document.getElementById("precio").value),
+  precios: {
+    general: Number(document.getElementById("precio").value)
+  },
   fecha: document.getElementById("fecha").value,
   recinto: document.getElementById("recinto").value,
   ciudad: document.getElementById("ciudad").value,
