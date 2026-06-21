@@ -421,3 +421,28 @@ pre {
     align-items: flex-start;
   }
 }
+
+.detalle-concierto {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.img-detalle {
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin-bottom: 20px;
+}
+
+.btn-regresar {
+  display: block;
+  margin-bottom: 20px;
+  background: #b03060;
+}
+
+.btn-regresar:hover {
+  background: #8e254c;
+}
