@@ -102,9 +102,11 @@ function verInformacion(id) {
     return;
   }
 
+  listaProductos.classList.add("vista-detalle");
+
   listaProductos.innerHTML = `
     <article class="detalle-concierto">
-      <button type="button" class="btn-regresar" onclick="mostrarProductos(productos, listaProductos)">
+      <button type="button" class="btn-regresar" onclick="listaProductos.classList.remove('vista-detalle'); mostrarProductos(productos, listaProductos)"
         ← Regresar
       </button>
 

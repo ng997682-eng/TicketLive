@@ -495,3 +495,13 @@ pre {
   padding: 10px 16px;
   font-size: 15px;
 }
+
+.productos-grid.vista-detalle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.productos-grid.vista-detalle .detalle-concierto {
+  margin: 30px auto;
+}

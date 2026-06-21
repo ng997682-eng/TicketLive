@@ -18,9 +18,8 @@
   {
     "id": 3,
     "nombre": "Aitana",
-    "precio": 1800,
-    "categoria": "Auditorio Nacional - Ciudad de México",
-    "stock": 3000,
+    "precio": 2500,
+    "stock": 10000,
     "imagen": "https://mallorcalivefestival.com/wp-content/uploads/2025/10/aitana-imagen-web.jpg"
   },
   {
