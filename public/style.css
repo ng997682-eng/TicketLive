@@ -12,14 +12,14 @@ body {
 .encabezado {
   background: linear-gradient(135deg, #d94f8a, #f7a8c8);
   color: white;
-  padding: 45px 30px;
+  padding: 35px 20px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .encabezado h1 {
   margin: 0 0 8px 0;
-  font-size: 5cqh;
+  font-size: 2.2rem;
 }
 
 .encabezado p {
@@ -126,33 +126,35 @@ body {
 }
 
 .producto-card {
-  border: 1px solid #f3a6c9;
-  border-radius: 16px;
+  border: none;
+  border-radius: 20px;
   padding: 0;
-  background: #fff0f7;
-  box-shadow: 0 6px 15px rgba(196, 80, 130, 0.15);
-  transition: transform 0.2s ease;
+  background: white;
+  box-shadow: 0 8px 22px rgba(176, 48, 96, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
   text-align: center;
 }
 
 .img-concierto {
   width: 100%;
-  height: 320px;
+  height: 360px;
   object-fit: cover;
   border-radius: 0;
-  margin-bottom: 14px;
+  margin: 0;
   display: block;
 }
 
 .producto-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(176, 48, 96, 0.28);
 }
 
 .producto-card h3 {
-  margin-top: 0;
+  margin: 0;
+  padding: 18px 10px 12px;
   color: #b03060;
-  font-size: 1.9rem;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -488,11 +490,11 @@ pre {
 .btn-info:hover {
   background-color: #8e254c;
 }
-
 .producto-card .btn-info {
   display: block;
-  width: fit-content;
-  margin: 12px auto 0 auto;
+  width: 70%;
+  margin: 18px auto 22px;
   background-color: #b03060;
-  padding: 8px 16px;
+  padding: 10px 16px;
+  font-size: 15px;
 }
