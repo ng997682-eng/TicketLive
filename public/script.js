@@ -194,9 +194,11 @@ async function actualizarStock(id) {
 
   const productoActualizado = {
   nombre: producto.nombre,
-  precios: {
-    general: producto.precios?.general || producto.precio
-  },
+  precios: producto.precios || {
+  general: producto.precio,
+  preferente: producto.precio,
+  vip: producto.precio
+},
   fecha: producto.fecha || "",
   recinto: producto.recinto || "",
   ciudad: producto.ciudad || "",
@@ -267,8 +269,10 @@ formProducto.addEventListener("submit", async event => {
 const producto = {
   nombre: document.getElementById("nombre").value,
   precios: {
-    general: Number(document.getElementById("precio").value)
-  },
+  general: Number(document.getElementById("precio").value),
+  preferente: Number(document.getElementById("precio").value),
+  vip: Number(document.getElementById("precio").value)
+},
   fecha: document.getElementById("fecha").value,
   recinto: document.getElementById("recinto").value,
   ciudad: document.getElementById("ciudad").value,
@@ -352,15 +356,18 @@ btnEstadisticas.addEventListener("click", async () => {
   const totalProductos = productos.length;
 
   const sumaPrecios = productos.reduce((suma, producto) => {
-    return suma + producto.precio;
+    return suma + (producto.precios?.general || producto.precio);
   }, 0);
 
   const precioPromedio = sumaPrecios / totalProductos;
-  const precioMasAlto = Math.max(...productos.map(concierto => concierto.precio));
-  const precioMasBajo = Math.min(...productos.map(concierto => concierto.precio));
+  const precioMasAlto = Math.max(...productos.map(concierto => concierto.precios?.general || concierto.precio));
+  const precioMasBajo = Math.min(...productos.map(concierto => concierto.precios?.general || concierto.precio));
 
   const productoMasCaro = productos.reduce((mayor, producto) => {
-    return producto.precio > mayor.precio ? producto : mayor;
+    const precioProducto = producto.precios?.general || producto.precio;
+    const precioMayor = mayor.precios?.general || mayor.precio;
+
+return precioProducto > precioMayor ? producto : mayor;
   }, productos[0]);
 
   const conciertoMasBoletos = productos.reduce((mayor, concierto) => {
