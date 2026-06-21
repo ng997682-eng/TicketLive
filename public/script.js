@@ -79,9 +79,9 @@ function mostrarProductos(lista, contenedor) {
     tarjeta.classList.add("producto-card");
 
   tarjeta.innerHTML = `
+  <h3>${producto.nombre}</h3>
   <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-concierto">
 
-  <h3>${producto.nombre}</h3>
 
   <button type="button" onclick="verInformacion(${producto.id})">
     Ver información
@@ -109,12 +109,11 @@ function verInformacion(id) {
         ← Regresar
       </button>
 
+      <h2>${producto.nombre}</h2>
       <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-detalle">
 
-      <h2>${producto.nombre}</h2>
-
       <p><strong>Precio del boleto:</strong> $${producto.precio}</p>
-      <p><strong>Recinto y ciudad:</strong> ${producto.categoria}</p>
+      <p><strong>Recinto y ciudad:</strong> ${producto.recinto}, ${producto.ciudad}</p>
       <p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
 
       <button class="btn-editar" type="button" onclick="editarProducto(${producto.id})">
