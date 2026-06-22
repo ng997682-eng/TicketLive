@@ -108,12 +108,13 @@ body {
   margin-top: 20px;
 }
 
-/* TARJETAS */
+/* TARJETAS DE CONCIERTOS */
 .productos-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
   margin-top: 0;
+  width: 100%;
 }
 
 .producto-card {
@@ -213,6 +214,10 @@ button:hover {
   background: #7c2a44;
 }
 
+.formulario button:hover {
+  background: #a7657c;
+}
+
 #btn-cancelar-edicion {
   display: block;
   margin: 15px auto;
@@ -222,12 +227,24 @@ button:hover {
   background-color: #d94f8a;
 }
 
+.btn-editar:hover {
+  background-color: #c13d78;
+}
+
 .btn-stock {
   background-color: #f39c12;
 }
 
+.btn-stock:hover {
+  background-color: #d68910;
+}
+
 .btn-eliminar {
   background-color: #e74c3c;
+}
+
+.btn-eliminar:hover {
+  background-color: #c0392b;
 }
 
 /* MENSAJES */
@@ -318,20 +335,27 @@ button:hover {
   grid-column: 1 / -1;
 }
 
-/* VISTA DETALLE */
-#lista-productos.vista-detalle,
-.vista-detalle {
+/* VISTA DETALLE CENTRADA */
+#productos.vista-activa {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+}
+
+#lista-productos.vista-detalle {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   width: 100% !important;
+  max-width: 100% !important;
   min-height: 650px;
+  margin: 0 auto !important;
 }
 
 .detalle-concierto {
   width: 760px;
   max-width: 92%;
-  margin: 40px auto;
+  margin: 40px auto !important;
   padding: 28px;
   background: #fff0f7;
   border-radius: 26px;
@@ -405,12 +429,6 @@ button:hover {
   background: #8e254c;
 }
 
-@media (max-width: 700px) {
-  .detalle-tarjetas {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* PRE */
 pre {
   background: #450427;
@@ -419,24 +437,6 @@ pre {
   border-radius: 12px;
   overflow-x: auto;
 }
-
-#productos.tab-content.active {
-position: relative;
-}
-
-#lista-productos.vista-detalle {
-  display: block !important;
-  width: 760px !important;
-  max-width: 90% !important;
-  margin-left: 50% !important;
-  transform: translateX(-50%) !important;
-}
-
-#lista-productos.vista-detalle .detalle-concierto {
-  width: 100% !important;
-  margin: 40px auto !important;
-}
-
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
@@ -450,7 +450,12 @@ position: relative;
     grid-template-columns: 1fr;
   }
 
-  @media (max-width: 700px) {
+  .detalle-tarjetas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
   .tabs {
     flex-direction: column;
     align-items: center;
@@ -467,5 +472,4 @@ position: relative;
   .img-concierto {
     height: 320px;
   }
-}
 }

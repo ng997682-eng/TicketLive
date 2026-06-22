@@ -61,17 +61,17 @@ async function obtenerProductos() {
 
 // 4. Mostrar conciertos en la interfaz
 function mostrarProductos(lista, contenedor) {
+  document.getElementById("productos").classList.remove("vista-activa");
   contenedor.className = "productos-grid";
-
-  if (encabezadoConciertos) {
-    encabezadoConciertos.style.display = "block";
-  }
-
   contenedor.innerHTML = "";
 
   if (lista.length === 0) {
     contenedor.innerHTML = "<p>No hay conciertos para mostrar.</p>";
     return;
+  }
+
+  if (encabezadoConciertos) {
+    encabezadoConciertos.style.display = "block";
   }
 
   lista.forEach(producto => {
@@ -102,9 +102,9 @@ function verInformacion(id) {
     return;
   }
 
-  listaProductos.className = "vista-detalle";
+  listaProductos.className = "productos-grid vista-detalle";
   encabezadoConciertos.style.display = "none";
-
+  document.getElementById("productos").classList.add("vista-activa");
   listaProductos.innerHTML = `
     <article class="detalle-concierto">
       <h2>${producto.nombre}</h2>
