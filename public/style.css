@@ -12,13 +12,13 @@ body {
 .encabezado {
   background: linear-gradient(135deg, #b03060, #d94f8a);
   color: white;
-  padding: 35px 20px;
+  padding: 60px 30px;
   text-align: center;
 }
 
 .encabezado h1 {
   margin: 0 0 8px;
-  font-size: 2.8rem;
+  font-size: 3.8rem;
 }
 
 .encabezado p {
@@ -30,7 +30,7 @@ body {
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   background: white;
-  padding: 14px;
+  padding: 20px;
   width: 100%;
 }
 

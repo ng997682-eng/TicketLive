@@ -320,13 +320,15 @@ const producto = {
 
     mensaje.className = "mensaje-exito";
     formProducto.reset();
-    productoId.value = "";
-    btnGuardar.textContent = "Guardar concierto";
-
-listaProductos.classList.remove("vista-detalle");
+productoId.value = "";
+btnGuardar.textContent = "Guardar concierto";
 
 await obtenerProductos();
 cambiarPestana("productos");
+
+if (id) {
+  verInformacion(Number(id));
+}
 
   } 
   catch (error) {
