@@ -21,6 +21,7 @@ const btnCancelarEdicion = document.getElementById("btn-cancelar-edicion");
 const encabezadoConciertos = document.getElementById("encabezado-conciertos");
 
 let productos = [];
+let artistaDetalleAbierto = null;
 
 // 2. Navegación por pestañas
 function cambiarPestana(idContenido) {
@@ -33,6 +34,10 @@ function cambiarPestana(idContenido) {
   if (tabSeleccionada && contenidoSeleccionado) {
     tabSeleccionada.classList.add("active");
     contenidoSeleccionado.classList.add("active");
+  }
+
+  if (idContenido === "productos" && artistaDetalleAbierto !== null) {
+    verInformacion(artistaDetalleAbierto);
   }
 }
 
@@ -101,6 +106,8 @@ function verInformacion(id) {
     mensaje.className = "mensaje-error";
     return;
   }
+
+  artistaDetalleAbierto = id;
 
   listaProductos.className = "productos-grid vista-detalle";
   encabezadoConciertos.style.display = "none";
