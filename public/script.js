@@ -179,6 +179,8 @@ mensaje.className = "mensaje-exito";
 listaProductos.classList.remove("vista-detalle");
 cambiarPestana("agregar");
 }
+
+
 //Función edtitar stock(id)
 async function actualizarStock(id) {
   const producto = productos.find(p => p.id === id);
