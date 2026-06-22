@@ -17,14 +17,14 @@
     "id": 2,
     "nombre": "Dua Lipa",
     "precios": {
-      "general": 1600,
+      "general": 1800,
       "preferente": 4200,
       "vip": 10000
     },
     "fecha": "2026-12-31",
     "recinto": "Estadio BBVA",
     "ciudad": "Monterrey",
-    "stock": 4500,
+    "stock": 70000,
     "imagen": "https://i.pinimg.com/736x/71/e8/bd/71e8bdb376e1e34204afe8c92f58b4fc.jpg"
   },
   {
@@ -44,7 +44,11 @@
   {
     "id": 4,
     "nombre": "Maná",
-    "precio": null,
+    "precios": {
+      "general": 1500,
+      "preferente": 3000,
+      "vip": 5500
+    },
     "fecha": "2026-07-21",
     "recinto": "Estadio de Béisbol \"Hermanos Serdán\"",
     "ciudad": "Puebla",
@@ -428,19 +432,5 @@
     "ciudad": "Ciudad de México",
     "stock": 65000,
     "imagen": "https://i.pinimg.com/736x/50/0a/1a/500a1a62d06f5f34109d646174f1bb61.jpg"
-  },
-  {
-    "id": 32,
-    "nombre": "Intocable",
-    "precios": {
-      "general": 600,
-      "preferente": 1200,
-      "vip": 2500
-    },
-    "fecha": "2026-09-15",
-    "recinto": "Auditorio GNP Seguros",
-    "ciudad": "Puebla",
-    "stock": 10000,
-    "imagen": "https://i.pinimg.com/736x/93/e5/57/93e5579ea185918ba2c4c4cf7eb25070.jpg"
   }
 ]

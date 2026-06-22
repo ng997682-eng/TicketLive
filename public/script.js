@@ -240,7 +240,15 @@ async function actualizarStock(id) {
     mensaje.className = "mensaje-exito";
 
     productos = await (await fetch("/productos")).json();
-    verInformacion(id);
+    cambiarPestana("productos");
+
+if (id) {
+  setTimeout(() => {
+    verInformacion(Number(id));
+  }, 50);
+} else {
+  mostrarProductos(productos, listaProductos);
+}
 
   } catch (error) {
     mensaje.textContent = error.message;
