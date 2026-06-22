@@ -3,7 +3,16 @@ async function buscarProductos() {
   if (productos.length === 0) {
     await obtenerProductos();
   }
+  
+  btnBuscar.addEventListener("click", buscarProductos);
 
+busqueda.addEventListener("keyup", event => {
+  if (event.key === "Enter") {
+    buscarProductos();
+  }
+});
+
+  
   const texto = busqueda.value.toLowerCase().trim();
 
   const filtrados = productos.filter(concierto => {
