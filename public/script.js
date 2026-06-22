@@ -35,10 +35,6 @@ function cambiarPestana(idContenido) {
     tabSeleccionada.classList.add("active");
     contenidoSeleccionado.classList.add("active");
   }
-
-  if (idContenido === "productos" && artistaDetalleAbierto !== null) {
-    verInformacion(artistaDetalleAbierto);
-  }
 }
 
 tabs.forEach(tab => {
