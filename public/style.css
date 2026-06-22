@@ -451,23 +451,15 @@ pre {
     height: 320px;
   }
   #productos.tab-content.active {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#productos {
   position: relative;
-  min-height: 720px;
 }
 
 #lista-productos.vista-detalle {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block !important;
   width: 760px !important;
   max-width: 90% !important;
-  display: block !important;
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
 }
 
 #lista-productos.vista-detalle .detalle-concierto {
