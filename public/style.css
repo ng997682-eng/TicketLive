@@ -95,28 +95,10 @@ body {
 
 
 .inicio-hero {
-  min-height: 720px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
   align-items: center;
-  padding-left: 100px;
-}
-
-.inicio-label {
-  font-size: 1.4rem;
-  letter-spacing: 5px;
-  font-weight: bold;
-  color: #b03060;
-}
-
-.inicio-texto h2 {
-  font-size: 7rem;
-  margin: 18px 0;
-  color: #430720;
-}
-
-.inicio-texto p {
-  font-size: 1.5rem;
-  max-width: 900px;
 }
 
 .inicio-texto {
@@ -128,16 +110,22 @@ body {
   color: #b03060;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1cap;
+  font-size: 1.5rem;
   margin-bottom: 14px;
 }
 
 .inicio-texto h2 {
-  font-size: 5.8rem;
+  font-size: 10rem;
   line-height: 0.9;
-  margin: 10px 0 25px;
+  margin: 10px  0px;
   color: #430720;
   text-transform: uppercase;
+}
+
+.inicio-texto p {
+  font-size: 1.25rem;
+  max-width: 800px;
 }
 
 .inicio-descripcion {
