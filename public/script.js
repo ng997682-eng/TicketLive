@@ -6,13 +6,11 @@ const listaProductos = document.getElementById("lista-productos");
 const formProducto = document.getElementById("form-producto");
 const mensaje = document.getElementById("mensaje");
 
-const btnCargarProductos = document.getElementById("btn-cargar-productos");
 const btnEstadisticas = document.getElementById("btn-estadisticas");
 const resumenEstadisticas = document.getElementById("resumen-estadisticas");
 
 const busqueda = document.getElementById("busqueda");
 const btnBuscar = document.getElementById("btn-buscar");
-const resultadosBusqueda = document.getElementById("resultados-busqueda");
 
 const productoId = document.getElementById("producto-id");
 const btnGuardar = document.getElementById("btn-guardar");
@@ -21,12 +19,11 @@ const btnCancelarEdicion = document.getElementById("btn-cancelar-edicion");
 const encabezadoConciertos = document.getElementById("encabezado-conciertos");
 
 let productos = [];
-let artistaDetalleAbierto = null;
 
 // 2. Navegación por pestañas
 function cambiarPestana(idContenido) {
-  tabs.forEach(t => t.classList.remove("active"));
-  contenidos.forEach(c => c.classList.remove("active"));
+  tabs.forEach(tab => tab.classList.remove("active"));
+  contenidos.forEach(contenido => contenido.classList.remove("active"));
 
   const tabSeleccionada = document.querySelector(`[data-tab="${idContenido}"]`);
   const contenidoSeleccionado = document.getElementById(idContenido);
@@ -43,7 +40,7 @@ tabs.forEach(tab => {
   });
 });
 
-// 3. Consultar conciertos del backend
+// 3. Consultar conciertos
 async function obtenerProductos() {
   try {
     const respuesta = await fetch("/productos");
@@ -53,47 +50,54 @@ async function obtenerProductos() {
     }
 
     productos = await respuesta.json();
-    mostrarProductos(productos, listaProductos);
+
+    if (!listaProductos.classList.contains("vista-detalle")) {
+      mostrarProductos(productos, listaProductos);
+    }
 
   } catch (error) {
     listaProductos.innerHTML = `<p class="error">${error.message}</p>`;
   }
 }
 
-// 4. Mostrar conciertos en la interfaz
+// 4. Mostrar tarjetas
 function mostrarProductos(lista, contenedor) {
   document.getElementById("productos").classList.remove("vista-activa");
   contenedor.className = "productos-grid";
   contenedor.innerHTML = "";
+
+  if (encabezadoConciertos) {
+    encabezadoConciertos.style.display = "block";
+  }
 
   if (lista.length === 0) {
     contenedor.innerHTML = "<p>No hay conciertos para mostrar.</p>";
     return;
   }
 
-  if (encabezadoConciertos) {
-    encabezadoConciertos.style.display = "block";
-  }
-
   lista.forEach(producto => {
     const tarjeta = document.createElement("article");
     tarjeta.classList.add("producto-card");
 
-  tarjeta.innerHTML = `
-  <h3>${producto.nombre}</h3>
-  <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-concierto">
-  
-  <button class="btn-info" type="button" onclick="verInformacion(${producto.id})">
-    Ver información
-  </button>
-`;
+    tarjeta.innerHTML = `
+      <h3>${producto.nombre}</h3>
 
+      <img 
+        src="${producto.imagen || 'img/concierto.jpg'}" 
+        alt="${producto.nombre}" 
+        class="img-concierto"
+      >
+
+      <button class="btn-info" type="button" onclick="verInformacion(${producto.id})">
+        Ver información
+      </button>
+    `;
 
     contenedor.appendChild(tarjeta);
   });
 }
 
-// ver info del artista
+// 5. Ver información
 function verInformacion(id) {
   const producto = productos.find(p => p.id === id);
 
@@ -103,16 +107,24 @@ function verInformacion(id) {
     return;
   }
 
-  artistaDetalleAbierto = id;
+  cambiarPestana("productos");
 
   listaProductos.className = "productos-grid vista-detalle";
-  encabezadoConciertos.style.display = "none";
   document.getElementById("productos").classList.add("vista-activa");
+
+  if (encabezadoConciertos) {
+    encabezadoConciertos.style.display = "none";
+  }
+
   listaProductos.innerHTML = `
     <article class="detalle-concierto">
       <h2>${producto.nombre}</h2>
 
-      <img src="${producto.imagen || 'img/concierto.jpg'}" alt="${producto.nombre}" class="img-detalle">
+      <img 
+        src="${producto.imagen || 'img/concierto.jpg'}" 
+        alt="${producto.nombre}" 
+        class="img-detalle"
+      >
 
       <div class="detalle-tarjetas">
         <div class="detalle-card">
@@ -125,7 +137,7 @@ function verInformacion(id) {
 
         <div class="detalle-card">
           <h3>Precios</h3>
-          <p><strong>General:</strong> $${producto.precios?.general || producto.precio}</p>
+          <p><strong>General:</strong> $${producto.precios?.general || producto.precio || "No registrado"}</p>
           <p><strong>Preferente:</strong> $${producto.precios?.preferente || "No registrado"}</p>
           <p><strong>VIP:</strong> $${producto.precios?.vip || "No registrado"}</p>
         </div>
@@ -145,41 +157,42 @@ function verInformacion(id) {
         </button>
       </div>
 
-      <button type="button" class="btn-regresar" onclick="encabezadoConciertos.style.display='block'; mostrarProductos(productos, listaProductos)">
+      <button type="button" class="btn-regresar" onclick="mostrarProductos(productos, listaProductos)">
         ← Regresar
       </button>
     </article>
   `;
 }
 
-// 5. función Editar artista(id)
+// 6. Editar concierto
 function editarProducto(id) {
-const producto = productos.find(p => p.id === id);
+  const producto = productos.find(p => p.id === id);
 
-if (!producto) {
-mensaje.textContent = "Concierto no encontrado.";
-mensaje.className = "mensaje-error";
-return;
+  if (!producto) {
+    mensaje.textContent = "Concierto no encontrado.";
+    mensaje.className = "mensaje-error";
+    return;
+  }
+
+  productoId.value = producto.id;
+  document.getElementById("nombre").value = producto.nombre;
+  document.getElementById("precio-general").value = producto.precios?.general || producto.precio || "";
+  document.getElementById("precio-preferente").value = producto.precios?.preferente || "";
+  document.getElementById("precio-vip").value = producto.precios?.vip || "";
+  document.getElementById("fecha").value = producto.fecha || "";
+  document.getElementById("recinto").value = producto.recinto || "";
+  document.getElementById("ciudad").value = producto.ciudad || "";
+  document.getElementById("imagen").value = producto.imagen || "";
+  document.getElementById("stock").value = producto.stock;
+
+  btnGuardar.textContent = "Actualizar concierto";
+  mensaje.textContent = "Editando concierto. Modifica los datos y guarda los cambios.";
+  mensaje.className = "mensaje-exito";
+
+  cambiarPestana("agregar");
 }
-productoId.value = producto.id;
-document.getElementById("nombre").value = producto.nombre;
-document.getElementById("precio-general").value = producto.precios?.general || producto.precio || "";
-document.getElementById("precio-preferente").value = producto.precios?.preferente || "";
-document.getElementById("precio-vip").value = producto.precios?.vip || "";
-document.getElementById("fecha").value = producto.fecha || "";
-document.getElementById("recinto").value = producto.recinto || "";
-document.getElementById("ciudad").value = producto.ciudad || "";
-document.getElementById("imagen").value = producto.imagen || "";
-document.getElementById("stock").value = producto.stock;
-btnGuardar.textContent = "Actualizar concierto";
-mensaje.textContent = "Editando concierto. Modifica los datos y guarda los cambios.";
-mensaje.className = "mensaje-exito";
-listaProductos.classList.remove("vista-detalle");
-cambiarPestana("agregar");
-}
 
-
-//Función edtitar stock(id)
+// 7. Actualizar boletos
 async function actualizarStock(id) {
   const producto = productos.find(p => p.id === id);
 
@@ -204,18 +217,9 @@ async function actualizarStock(id) {
   }
 
   const productoActualizado = {
-  nombre: producto.nombre,
-  precios: producto.precios || {
-  general: producto.precio,
-  preferente: producto.precio,
-  vip: producto.precio
-},
-  fecha: producto.fecha || "",
-  recinto: producto.recinto || "",
-  ciudad: producto.ciudad || "",
-  stock: stockNumero,
-  imagen: producto.imagen || ""
-};
+    ...producto,
+    stock: stockNumero
+  };
 
   try {
     const respuesta = await fetch(`/productos/${id}`, {
@@ -234,14 +238,16 @@ async function actualizarStock(id) {
     mensaje.textContent = "Boletos actualizados correctamente.";
     mensaje.className = "mensaje-exito";
 
-    await obtenerProductos();
+    productos = await (await fetch("/productos")).json();
+    verInformacion(id);
 
   } catch (error) {
     mensaje.textContent = error.message;
     mensaje.className = "mensaje-error";
   }
 }
-// Función eliminar concierto
+
+// 8. Eliminar concierto
 async function eliminarProducto(id) {
   const confirmar = confirm("¿Seguro que quieres eliminar este concierto?");
 
@@ -263,6 +269,7 @@ async function eliminarProducto(id) {
     mensaje.className = "mensaje-exito";
 
     await obtenerProductos();
+    mostrarProductos(productos, listaProductos);
 
   } catch (error) {
     mensaje.textContent = error.message;
@@ -270,26 +277,25 @@ async function eliminarProducto(id) {
   }
 }
 
-
-//submit del formulario
+// 9. Guardar o actualizar concierto
 formProducto.addEventListener("submit", async event => {
   event.preventDefault();
 
   const id = productoId.value;
 
-const producto = {
-  nombre: document.getElementById("nombre").value,
-  precios: {
-  general: Number(document.getElementById("precio-general").value),
-  preferente: Number(document.getElementById("precio-preferente").value),
-  vip: Number(document.getElementById("precio-vip").value)
-},
-  fecha: document.getElementById("fecha").value,
-  recinto: document.getElementById("recinto").value,
-  ciudad: document.getElementById("ciudad").value,
-  stock: Number(document.getElementById("stock").value),
-  imagen: document.getElementById("imagen").value
-};
+  const producto = {
+    nombre: document.getElementById("nombre").value,
+    precios: {
+      general: Number(document.getElementById("precio-general").value),
+      preferente: Number(document.getElementById("precio-preferente").value),
+      vip: Number(document.getElementById("precio-vip").value)
+    },
+    fecha: document.getElementById("fecha").value,
+    recinto: document.getElementById("recinto").value,
+    ciudad: document.getElementById("ciudad").value,
+    stock: Number(document.getElementById("stock").value),
+    imagen: document.getElementById("imagen").value
+  };
 
   const url = id ? `/productos/${id}` : "/productos";
   const metodo = id ? "PUT" : "POST";
@@ -308,32 +314,32 @@ const producto = {
       throw new Error(error.mensaje || "No se pudo guardar el concierto.");
     }
 
-  mensaje.textContent = id
-  ? "Concierto actualizado correctamente."
-  : "Concierto registrado correctamente.";
-      
-      
+    mensaje.textContent = id
+      ? "Concierto actualizado correctamente."
+      : "Concierto registrado correctamente.";
 
     mensaje.className = "mensaje-exito";
+
     formProducto.reset();
-productoId.value = "";
-btnGuardar.textContent = "Guardar concierto";
+    productoId.value = "";
+    btnGuardar.textContent = "Guardar concierto";
 
-await obtenerProductos();
-cambiarPestana("productos");
+    productos = await (await fetch("/productos")).json();
 
-if (id) {
-  verInformacion(Number(id));
-}
+    if (id) {
+      verInformacion(Number(id));
+    } else {
+      cambiarPestana("productos");
+      mostrarProductos(productos, listaProductos);
+    }
 
-  } 
-  catch (error) {
+  } catch (error) {
     mensaje.textContent = error.message;
     mensaje.className = "mensaje-error";
   }
 });
 
-// 6. Función de búsqueda
+// 10. Buscar conciertos
 async function buscarProductos() {
   if (productos.length === 0) {
     await obtenerProductos();
@@ -355,15 +361,19 @@ async function buscarProductos() {
   cambiarPestana("productos");
 }
 
-btnBuscar.addEventListener("click", buscarProductos);
+if (btnBuscar) {
+  btnBuscar.addEventListener("click", buscarProductos);
+}
 
-busqueda.addEventListener("keyup", event => {
-  if (event.key === "Enter") {
-    buscarProductos();
-  }
-});
+if (busqueda) {
+  busqueda.addEventListener("keyup", event => {
+    if (event.key === "Enter") {
+      buscarProductos();
+    }
+  });
+}
 
-// 7. Calcular estadísticas
+// 11. Estadísticas
 btnEstadisticas.addEventListener("click", async () => {
   if (productos.length === 0) {
     await obtenerProductos();
@@ -405,21 +415,15 @@ btnEstadisticas.addEventListener("click", async () => {
   }, 0);
 
   const conteoRecintos = {};
-
   productos.forEach(concierto => {
     const recinto = concierto.recinto || "Sin recinto";
-
-    conteoRecintos[recinto] =
-      (conteoRecintos[recinto] || 0) + 1;
+    conteoRecintos[recinto] = (conteoRecintos[recinto] || 0) + 1;
   });
 
   const conteoCiudades = {};
-
   productos.forEach(concierto => {
     const ciudad = concierto.ciudad || "Sin ciudad";
-
-    conteoCiudades[ciudad] =
-      (conteoCiudades[ciudad] || 0) + 1;
+    conteoCiudades[ciudad] = (conteoCiudades[ciudad] || 0) + 1;
   });
 
   const ciudadMasConciertos = Object.keys(conteoCiudades).reduce((a, b) =>
@@ -480,7 +484,7 @@ btnEstadisticas.addEventListener("click", async () => {
   `;
 });
 
-// 8. Cancelar edición
+// 12. Cancelar edición
 btnCancelarEdicion.addEventListener("click", cancelarEdicion);
 
 function cancelarEdicion() {
@@ -490,7 +494,8 @@ function cancelarEdicion() {
   mensaje.textContent = "Edición de concierto cancelada.";
   mensaje.className = "mensaje-exito";
   cambiarPestana("productos");
+  mostrarProductos(productos, listaProductos);
 }
 
-// 9. Carga inicial
+// 13. Carga inicial
 obtenerProductos();
