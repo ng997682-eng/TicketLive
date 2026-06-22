@@ -411,4 +411,20 @@ pre {
   .img-concierto {
     height: 320px;
   }
+  #productos.tab-content.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#lista-productos.vista-detalle {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+#lista-productos.vista-detalle .detalle-concierto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 }
