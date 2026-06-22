@@ -323,12 +323,12 @@ button:hover {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  width: 100% !important;
+  width: 100%;
   min-height: 620px;
 }
 
 .detalle-concierto {
-  width: 760px;
+  width: 650px;
   max-width: 90%;
   margin: 40px auto;
   padding: 28px;
@@ -341,13 +341,7 @@ button:hover {
 .detalle-concierto h2 {
   color: #b03060;
   font-size: 2.4rem;
-  margin: 0 0 20px;
-}
-
-.detalle-contenido {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 20px;
 }
 
 .detalle-botones {
@@ -355,18 +349,11 @@ button:hover {
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.detalle-botones button {
-  min-width: 170px;
-  padding: 10px 14px;
-  border-radius: 20px;
+  margin-bottom: 18px;
 }
 
 .img-detalle {
   width: 100%;
-  max-width: 560px;
   height: 390px;
   object-fit: cover;
   border-radius: 20px;
@@ -379,6 +366,9 @@ button:hover {
 }
 
 .btn-regresar {
+  display: block;
+  width: 180px;
+  margin: 20px auto 0;
   background: #b03060;
 }
 

@@ -1,8 +1,4 @@
 // 1. Selección de elementos del DOM
-
-const btnMenu = document.getElementById("btn-menu");
-const menuTabs = document.querySelector(".tabs");
-
 const tabs = document.querySelectorAll(".tab");
 const contenidos = document.querySelectorAll(".tab-content");
 
@@ -44,10 +40,6 @@ tabs.forEach(tab => {
   tab.addEventListener("click", () => {
     cambiarPestana(tab.dataset.tab);
   });
-});
-
-btnMenu.addEventListener("click", () => {
-  menuTabs.classList.toggle("mostrar-menu");
 });
 
 // 3. Consultar conciertos del backend
@@ -118,10 +110,7 @@ function verInformacion(id) {
 
       <div class="detalle-contenido">
         <div class="detalle-botones">
-          <button type="button" class="btn-regresar" onclick="listaProductos.classList.remove('vista-detalle'); encabezadoConciertos.style.display='block'; mostrarProductos(productos, listaProductos)">
-           ← Regresar
-          </button>
-
+          
           <button class="btn-editar" type="button" onclick="editarProducto(${producto.id})">
             Editar concierto
           </button>
@@ -147,6 +136,9 @@ function verInformacion(id) {
           <p><strong>Boletos disponibles:</strong> ${producto.stock}</p>
         </div>
       </div>
+      <button type="button" class="btn-regresar" onclick="encabezadoConciertos.style.display='block'; mostrarProductos(productos, listaProductos)">
+        ← Regresar
+      </button>
     </article>
   `;
 }
