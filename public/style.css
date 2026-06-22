@@ -60,15 +60,15 @@ body {
 
 .contenedor {
   max-width: 100%;
-  margin: 20px auto;
-  padding: 0 14px;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .tab-content {
   display: none;
   background: #fff0f7;
-  padding: 32px;
-  border-radius: 20px;
+  padding: 0;
+  border-radius: 0;
 }
 
 .tab-content.active {
@@ -78,12 +78,16 @@ body {
 /* INICIO */
 
 .inicio-ticket {
+  min-height: calc(100vh - 230px);
+  width: 100%;
+  border-radius: 0;
+  padding: 60px 80px;
   background: linear-gradient(135deg, #ffe1ee, #ffc1dc, #f68fbd);
-  border-radius: 22px;
-  padding: 50px;
-  min-height: 540px;
-  overflow: hidden;
 }
+
+
+
+
 
 .inicio-hero {
   display: grid;
@@ -138,9 +142,9 @@ body {
 
 .inicio-imagen img {
   width: 100%;
-  height: 400px;
+  height: 520px;
   object-fit: cover;
-  border-radius: 26px;
+  border-radius: 28px;
   box-shadow: 0 20px 45px rgba(67, 7, 32, 0.35);
 }
 
