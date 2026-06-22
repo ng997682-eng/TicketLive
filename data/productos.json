@@ -1,23 +1,25 @@
 [
   {
-  "id": 1,
-  "nombre": "Shakira",
-  "precios": {
-    "general": 1600,
-    "preferente": 3500,
-    "vip": 10800
+    "id": 1,
+    "nombre": "Shakira",
+    "precios": {
+      "general": 1600,
+      "preferente": 3500,
+      "vip": 10800
+    },
+    "fecha": "2026-06-17",
+    "recinto": "Estadio GNP Seguros",
+    "ciudad": "Monterrey",
+    "stock": 10500,
+    "imagen": "https://telemax.com.mx/wp-content/uploads/2025/03/shakira.png"
   },
-  "fecha": "2026-06-17",
-  "recinto": "Estadio GNP Seguros",
-  "ciudad": "Monterrey",
-  "stock": 10500,
-  "imagen": "https://telemax.com.mx/wp-content/uploads/2025/03/shakira.png"
-},
   {
     "id": 2,
     "nombre": "Dua Lipa",
     "precios": {
-      "general": 70000
+      "general": 1800,
+      "preferente": 4200,
+      "vip": 9500
     },
     "fecha": "2026-12-31",
     "recinto": "Estadio BBVA",
@@ -29,11 +31,13 @@
     "id": 3,
     "nombre": "Aitana",
     "precios": {
-      "general": 3500
+      "general": 900,
+      "preferente": 1800,
+      "vip": 4200
     },
     "fecha": "2026-06-18",
     "recinto": "Auditorio Nacional",
-    "ciudad": "Ciudad de Mexico",
+    "ciudad": "Ciudad de México",
     "stock": 10000,
     "imagen": "https://mallorcalivefestival.com/wp-content/uploads/2025/10/aitana-imagen-web.jpg"
   },
@@ -41,7 +45,9 @@
     "id": 4,
     "nombre": "Maná",
     "precios": {
-      "general": 950
+      "general": 850,
+      "preferente": 1800,
+      "vip": 3500
     },
     "fecha": "2026-07-21",
     "recinto": "Estadio de Béisbol \"Hermanos Serdán\"",
@@ -53,11 +59,13 @@
     "id": 5,
     "nombre": "Caifanes",
     "precios": {
-      "general": 1900
+      "general": 700,
+      "preferente": 1500,
+      "vip": 3000
     },
     "fecha": "2026-07-16",
     "recinto": "Estadio GNP Seguros",
-    "ciudad": "Ciudad de Mexico",
+    "ciudad": "Ciudad de México",
     "stock": 65000,
     "imagen": "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/56QOV42AZBDGBIM5CPJCMPXNUQ.jpg"
   },
@@ -65,9 +73,13 @@
     "id": 6,
     "nombre": "Zoé",
     "precios": {
-      "general": 1700
+      "general": 800,
+      "preferente": 1700,
+      "vip": 3200
     },
-    "categoria": "Auditorio Nacional - Ciudad de México",
+    "fecha": "2026-08-02",
+    "recinto": "Auditorio Nacional",
+    "ciudad": "Ciudad de México",
     "stock": 3500,
     "imagen": "https://i.pinimg.com/736x/db/07/86/db0786dd884a48602102f7e1df12276a.jpg"
   },
@@ -75,9 +87,13 @@
     "id": 7,
     "nombre": "El Tri",
     "precios": {
-      "general": 1200
+      "general": 650,
+      "preferente": 1400,
+      "vip": 2800
     },
-    "categoria": "Estadio Ciudad de los Deportes - Ciudad de México",
+    "fecha": "2026-08-09",
+    "recinto": "Estadio Ciudad de los Deportes",
+    "ciudad": "Ciudad de México",
     "stock": 3800,
     "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/42/Alex_Lora.jpg"
   },
@@ -85,9 +101,13 @@
     "id": 8,
     "nombre": "Peso Pluma",
     "precios": {
-      "general": 2800
+      "general": 1800,
+      "preferente": 4000,
+      "vip": 8500
     },
-    "categoria": "Estadio BBVA - Monterrey",
+    "fecha": "2026-08-16",
+    "recinto": "Estadio BBVA",
+    "ciudad": "Monterrey",
     "stock": 5500,
     "imagen": "https://i.pinimg.com/736x/87/65/0e/87650ed263bdfcd80c239abe91d5126c.jpg"
   },
@@ -95,9 +115,13 @@
     "id": 9,
     "nombre": "Bad Bunny",
     "precios": {
-      "general": 4000
+      "general": 2500,
+      "preferente": 6500,
+      "vip": 14000
     },
-    "categoria": "Estadio GNP Seguros - Ciudad de México",
+    "fecha": "2026-08-23",
+    "recinto": "Estadio GNP Seguros",
+    "ciudad": "Ciudad de México",
     "stock": 6000,
     "imagen": "https://i.pinimg.com/736x/ae/15/d7/ae15d7b3e629435ae4796f5bde72c7ff.jpg"
   },
@@ -105,9 +129,13 @@
     "id": 10,
     "nombre": "The Weeknd",
     "precios": {
-      "general": 3800
+      "general": 2200,
+      "preferente": 5500,
+      "vip": 12000
     },
-    "categoria": "Estadio GNP Seguros - Ciudad de México",
+    "fecha": "2026-08-30",
+    "recinto": "Estadio GNP Seguros",
+    "ciudad": "Ciudad de México",
     "stock": 5800,
     "imagen": "https://i.pinimg.com/736x/be/21/14/be2114016a1a1f07aaa4278e08480645.jpg"
   },
@@ -115,9 +143,13 @@
     "id": 11,
     "nombre": "Karol G",
     "precios": {
-      "general": 3400
+      "general": 1900,
+      "preferente": 4500,
+      "vip": 9500
     },
-    "categoria": "Estadio BBVA - Monterrey",
+    "fecha": "2026-09-06",
+    "recinto": "Estadio BBVA",
+    "ciudad": "Monterrey",
     "stock": 5000,
     "imagen": "https://i.pinimg.com/1200x/ac/e1/34/ace13412c29c0520db9cc43790a3e3ce.jpg"
   },
@@ -125,9 +157,13 @@
     "id": 12,
     "nombre": "Kenia OS",
     "precios": {
-      "general": 1600
+      "general": 700,
+      "preferente": 1500,
+      "vip": 3000
     },
-    "categoria": "Auditorio Telmex - Guadalajara",
+    "fecha": "2026-09-13",
+    "recinto": "Auditorio Telmex",
+    "ciudad": "Guadalajara",
     "stock": 2900,
     "imagen": "https://i.pinimg.com/736x/d6/62/c6/d662c613d505e038654f281c5892df69.jpg"
   },
@@ -135,9 +171,13 @@
     "id": 13,
     "nombre": "Danna",
     "precios": {
-      "general": 1500
+      "general": 700,
+      "preferente": 1500,
+      "vip": 2800
     },
-    "categoria": "Auditorio Nacional - Ciudad de México",
+    "fecha": "2026-09-20",
+    "recinto": "Auditorio Nacional",
+    "ciudad": "Ciudad de México",
     "stock": 2800,
     "imagen": "https://i.pinimg.com/736x/32/6f/44/326f4408dc6afa5fa8825a7e434f31ce.jpg"
   },
@@ -145,9 +185,13 @@
     "id": 14,
     "nombre": "Belinda",
     "precios": {
-      "general": 1400
+      "general": 650,
+      "preferente": 1400,
+      "vip": 2600
     },
-    "categoria": "Teatro Diana - Guadalajara",
+    "fecha": "2026-09-27",
+    "recinto": "Teatro Diana",
+    "ciudad": "Guadalajara",
     "stock": 1800,
     "imagen": "https://i.pinimg.com/736x/5f/39/49/5f394930bd5192a564c7918cac9ca8de.jpg"
   },
@@ -155,9 +199,13 @@
     "id": 15,
     "nombre": "Carín León",
     "precios": {
-      "general": 2200
+      "general": 1200,
+      "preferente": 2600,
+      "vip": 5500
     },
-    "categoria": "Estadio Mobil Super - Monterrey",
+    "fecha": "2026-10-04",
+    "recinto": "Estadio Mobil Super",
+    "ciudad": "Monterrey",
     "stock": 4500,
     "imagen": "https://i.pinimg.com/736x/ed/5a/d3/ed5ad37fdb50cc49c2bd6a3798e48d51.jpg"
   },
@@ -165,9 +213,13 @@
     "id": 16,
     "nombre": "Junior H",
     "precios": {
-      "general": 2100
+      "general": 1300,
+      "preferente": 2800,
+      "vip": 6000
     },
-    "categoria": "Auditorio GNP Seguros - Puebla",
+    "fecha": "2026-10-11",
+    "recinto": "Auditorio GNP Seguros",
+    "ciudad": "Puebla",
     "stock": 4200,
     "imagen": "https://i.pinimg.com/1200x/02/f1/e9/02f1e9f74159e0dfa73447e849060f7f.jpg"
   },
@@ -175,9 +227,13 @@
     "id": 17,
     "nombre": "Natanael Cano",
     "precios": {
-      "general": 2100
+      "general": 1400,
+      "preferente": 3000,
+      "vip": 6500
     },
-    "categoria": "Auditorio GNP Seguros - Puebla",
+    "fecha": "2026-10-18",
+    "recinto": "Auditorio GNP Seguros",
+    "ciudad": "Puebla",
     "stock": 3900,
     "imagen": "https://i.pinimg.com/736x/4b/cf/c7/4bcfc7086b07910e70ce73cbae7f2ea4.jpg"
   },
@@ -185,9 +241,13 @@
     "id": 18,
     "nombre": "Grupo Frontera",
     "precios": {
-      "general": 1900
+      "general": 1000,
+      "preferente": 2200,
+      "vip": 4500
     },
-    "categoria": "Auditorio Telmex - Guadalajara",
+    "fecha": "2026-10-25",
+    "recinto": "Auditorio Telmex",
+    "ciudad": "Guadalajara",
     "stock": 3600,
     "imagen": "https://i.pinimg.com/1200x/e8/40/83/e840832679bcf978fac322c2e94e61dd.jpg"
   },
@@ -195,9 +255,13 @@
     "id": 19,
     "nombre": "Fuerza Regida",
     "precios": {
-      "general": 2300
+      "general": 1400,
+      "preferente": 3200,
+      "vip": 7000
     },
-    "categoria": "Estadio Mobil Super - Monterrey",
+    "fecha": "2026-11-01",
+    "recinto": "Estadio Mobil Super",
+    "ciudad": "Monterrey",
     "stock": 4600,
     "imagen": "https://i.pinimg.com/736x/5c/20/ce/5c20ce6ab16444a33310c9ea579d0e93.jpg"
   },
@@ -205,9 +269,13 @@
     "id": 20,
     "nombre": "Feid",
     "precios": {
-      "general": 2600
+      "general": 1600,
+      "preferente": 3500,
+      "vip": 7800
     },
-    "categoria": "Estadio Ciudad de los Deportes - Ciudad de México",
+    "fecha": "2026-11-08",
+    "recinto": "Estadio Ciudad de los Deportes",
+    "ciudad": "Ciudad de México",
     "stock": 4300,
     "imagen": "https://i.pinimg.com/736x/9b/60/31/9b6031b2fe5e06cf451e144d3b398c67.jpg"
   },
@@ -215,9 +283,13 @@
     "id": 21,
     "nombre": "Olivia Rodrigo",
     "precios": {
-      "general": 3000
+      "general": 1800,
+      "preferente": 4200,
+      "vip": 9000
     },
-    "categoria": "Auditorio Nacional - Ciudad de México",
+    "fecha": "2026-11-15",
+    "recinto": "Auditorio Nacional",
+    "ciudad": "Ciudad de México",
     "stock": 3200,
     "imagen": "https://i.pinimg.com/736x/d7/29/99/d729997cce50f739c8f97821c19f4554.jpg"
   },
@@ -225,9 +297,13 @@
     "id": 22,
     "nombre": "Sam Smith",
     "precios": {
-      "general": 2900
+      "general": 1500,
+      "preferente": 3500,
+      "vip": 7500
     },
-    "categoria": "Auditorio Nacional - Ciudad de México",
+    "fecha": "2026-11-22",
+    "recinto": "Auditorio Nacional",
+    "ciudad": "Ciudad de México",
     "stock": 3100,
     "imagen": "https://i.pinimg.com/736x/6e/38/be/6e38bed4c4adea37883ccd0aca5dc623.jpg"
   },
@@ -235,9 +311,13 @@
     "id": 23,
     "nombre": "Danny Ocean",
     "precios": {
-      "general": 1700
+      "general": 800,
+      "preferente": 1700,
+      "vip": 3500
     },
-    "categoria": "Auditorio GNP Seguros - Puebla",
+    "fecha": "2026-11-29",
+    "recinto": "Auditorio GNP Seguros",
+    "ciudad": "Puebla",
     "stock": 3000,
     "imagen": "https://i.pinimg.com/736x/95/5a/d3/955ad340a72646608c09487440a9577b.jpg"
   },
@@ -245,9 +325,13 @@
     "id": 24,
     "nombre": "The Killers",
     "precios": {
-      "general": 3300
+      "general": 1800,
+      "preferente": 4200,
+      "vip": 8500
     },
-    "categoria": "Estadio BBVA - Monterrey",
+    "fecha": "2026-12-06",
+    "recinto": "Estadio BBVA",
+    "ciudad": "Monterrey",
     "stock": 5100,
     "imagen": "https://i.pinimg.com/1200x/cd/6e/c4/cd6ec48aca8beb568d411daf702decdb.jpg"
   },
@@ -255,9 +339,13 @@
     "id": 25,
     "nombre": "Imagine Dragons",
     "precios": {
-      "general": 3400
+      "general": 1900,
+      "preferente": 4500,
+      "vip": 9000
     },
-    "categoria": "Estadio GNP Seguros - Ciudad de México",
+    "fecha": "2026-12-13",
+    "recinto": "Estadio GNP Seguros",
+    "ciudad": "Ciudad de México",
     "stock": 5600,
     "imagen": "https://i.pinimg.com/736x/ef/25/94/ef25946382572e99f07afd4104734788.jpg"
   },
@@ -265,58 +353,94 @@
     "id": 26,
     "nombre": "Taylor Swift",
     "precios": {
-      "general": 10000
+      "general": 3500,
+      "preferente": 8500,
+      "vip": 18000
     },
-    "categoria": "Estadio GNP Seguros -Ciudad de Mexico",
+    "fecha": "2026-12-20",
+    "recinto": "Estadio GNP Seguros",
+    "ciudad": "Ciudad de México",
     "stock": 65000,
     "imagen": "https://i.pinimg.com/1200x/85/b2/a9/85b2a902b8c76827b1a00c5b568b0ca8.jpg"
   },
   {
     "id": 27,
     "nombre": "Post Malone",
-    "precio": 5500,
-    "categoria": "Palacio de los Deportes -Ciudad de México",
+    "precios": {
+      "general": 2200,
+      "preferente": 5200,
+      "vip": 11000
+    },
+    "fecha": "2026-12-27",
+    "recinto": "Palacio de los Deportes",
+    "ciudad": "Ciudad de México",
     "stock": 20000,
     "imagen": "https://i.pinimg.com/736x/92/64/77/9264776a2a97eb8837e20f43f9e35e17.jpg"
   },
   {
     "id": 28,
     "nombre": "Ariana Grande",
-    "precio": 7000,
-    "categoria": "Arena CDMX - Ciudad de México",
+    "precios": {
+      "general": 2500,
+      "preferente": 6000,
+      "vip": 13000
+    },
+    "fecha": "2027-01-03",
+    "recinto": "Arena CDMX",
+    "ciudad": "Ciudad de México",
     "stock": 22300,
     "imagen": "https://i.pinimg.com/1200x/01/cf/f9/01cff99784d49ce03d9262970e24e243.jpg"
   },
   {
     "id": 29,
     "nombre": "BTS",
-    "precio": 8000,
-    "categoria": "Estadio Azteca - Ciudad de México",
+    "precios": {
+      "general": 4000,
+      "preferente": 9500,
+      "vip": 20000
+    },
+    "fecha": "2027-01-10",
+    "recinto": "Estadio Azteca",
+    "ciudad": "Ciudad de México",
     "stock": 83264,
     "imagen": "https://i.pinimg.com/736x/18/d7/8b/18d78b48e97200585744aa7feb5698bf.jpg"
   },
   {
     "id": 30,
     "nombre": "Katseye",
-    "precio": 2300,
-    "categoria": "Auditorio Telmex - Guadalajara",
+    "precios": {
+      "general": 800,
+      "preferente": 1800,
+      "vip": 3500
+    },
+    "fecha": "2027-01-17",
+    "recinto": "Auditorio Telmex",
+    "ciudad": "Guadalajara",
     "stock": 11500,
     "imagen": "https://i.pinimg.com/736x/62/a4/85/62a485e33d652eab6051d6b30f701c70.jpg"
   },
   {
     "id": 31,
     "nombre": "Enjambre",
-    "precio": 2500,
+    "precios": {
+      "general": 700,
+      "preferente": 1500,
+      "vip": 2800
+    },
     "fecha": "2026-08-17",
-    "recinto": "Estadio Ciudad de México ",
-    "ciudad": "Ciudad de México ",
+    "recinto": "Estadio Ciudad de México",
+    "ciudad": "Ciudad de México",
     "stock": 65000,
     "imagen": "https://i.pinimg.com/736x/50/0a/1a/500a1a62d06f5f34109d646174f1bb61.jpg"
   },
   {
     "id": 32,
     "nombre": "Intocable",
-    "precio": 1000,
+    "precios": {
+      "general": 600,
+      "preferente": 1200,
+      "vip": 2500
+    },
     "fecha": "2026-09-15",
     "recinto": "Auditorio GNP Seguros",
     "ciudad": "Puebla",
