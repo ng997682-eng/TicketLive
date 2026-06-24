@@ -142,19 +142,17 @@ function verInformacion(id) {
         </div>
       </div>
 
-      <div class="detalle-botones">
-        <button class="btn-editar" type="button" onclick="editarProducto(${producto.id})">
-          Editar concierto
-        </button>
+      <button class="btn-editar solo-admin" type="button" onclick="editarProducto(${producto.id})">
+        Editar concierto
+      </button>
 
-        <button class="btn-stock" type="button" onclick="actualizarStock(${producto.id})">
-          Actualizar boletos
-        </button>
+      <button class="btn-stock solo-admin" type="button" onclick="actualizarStock(${producto.id})">
+        Actualizar boletos
+      </button>
 
-        <button class="btn-eliminar" type="button" onclick="eliminarProducto(${producto.id})">
-          Eliminar concierto
-        </button>
-      </div>
+     <button class="btn-eliminar solo-admin" type="button" onclick="eliminarProducto(${producto.id})">
+      Eliminar concierto
+     </button>
 
       <button type="button" class="btn-regresar" onclick="mostrarProductos(productos, listaProductos)">
         ← Regresar
@@ -512,3 +510,20 @@ function cancelarEdicion() {
 
 // 13. Carga inicial
 obtenerProductos();
+
+// 14. Iniciar sesión de administrador
+function iniciarSesionAdmin() {
+  const usuario = document.getElementById("usuario-admin").value;
+  const password = document.getElementById("password-admin").value;
+  const mensajeLogin = document.getElementById("mensaje-login");
+
+  if (usuario === "admin" && password === "1234") {
+    document.body.classList.add("admin-activo");
+    document.getElementById("login-admin").style.display = "none";
+    mensajeLogin.textContent = "";
+    alert("Sesión de administrador iniciada.");
+  } else {
+    mensajeLogin.textContent = "Usuario o contraseña incorrectos.";
+    mensajeLogin.className = "mensaje-error";
+  }
+}

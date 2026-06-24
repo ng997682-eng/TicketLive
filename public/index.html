@@ -16,10 +16,24 @@
   <nav class="tabs">
     <button class="tab active" data-tab="inicio">🏠 Inicio</button>
     <button class="tab" data-tab="productos">🎤 Conciertos</button>
-    <button class="tab" data-tab="agregar">➕ Agregar</button>
-    <button class="tab" data-tab="estadisticas">📊 Dashboard</button>
+    <button class="tab solo-admin" data-tab="agregar">➕ Agregar</button>
+    <button class="tab solo-admin" data-tab="estadisticas">📊 Dashboard</button>
     <button class="tab" data-tab="acerca">ℹ️ Acerca del sistema</button>
   </nav>
+
+  <section id="login-admin" class="login-admin">
+  <h2>Acceso administrador</h2>
+
+  <input type="text" id="usuario-admin" placeholder="Usuario">
+  <input type="password" id="password-admin" placeholder="Contraseña">
+
+  <button type="button" onclick="iniciarSesionAdmin()">
+    Iniciar sesión
+  </button>
+
+  <p id="mensaje-login"></p>
+</section>
+
 
   <main class="contenedor">
 
