@@ -853,6 +853,7 @@ btnEstadisticas.addEventListener("click", async () => {
   const ciudadMasConciertos = Object.keys(conteoCiudades).reduce((a, b) => conteoCiudades[a] > conteoCiudades[b] ? a : b);
 
   resumenEstadisticas.innerHTML = `
+  
     <h3 class="dashboard-titulo">Resumen general</h3>
     <div class="estadistica dashboard-principal">
       <strong>Total de conciertos</strong>
@@ -888,9 +889,84 @@ btnEstadisticas.addEventListener("click", async () => {
     <div class="estadistica">
       <strong>Ciudad con más conciertos:</strong> ${ciudadMasConciertos}
     </div>
+    
   `;
 });
+// Estadísticas de compras (solo admin)
+if (usuarioActual?.esAdmin) {
+  const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+  
+  const todasLasCompras = [];
+  usuarios.forEach(u => {
+    (u.historial || []).forEach(compra => {
+      todasLasCompras.push({ ...compra, comprador: u.usuario });
+    });
+  });
 
+  const totalCompras    = todasLasCompras.length;
+  const totalRecaudado  = todasLasCompras.reduce((s, c) => s + c.total, 0);
+  const totalBoletos    = todasLasCompras.reduce((s, c) => s + c.cantidad, 0);
+
+  // Sección más vendida
+  const conteoSecciones = { general: 0, preferente: 0, vip: 0 };
+  todasLasCompras.forEach(c => {
+    conteoSecciones[c.seccion] = (conteoSecciones[c.seccion] || 0) + c.cantidad;
+  });
+  const seccionTop = Object.keys(conteoSecciones).reduce((a, b) =>
+    conteoSecciones[a] > conteoSecciones[b] ? a : b
+  );
+
+  // Concierto más comprado
+  const conteoPorConcierto = {};
+  todasLasCompras.forEach(c => {
+    conteoPorConcierto[c.concierto] = (conteoPorConcierto[c.concierto] || 0) + c.cantidad;
+  });
+  const conciertoTop = totalCompras > 0
+    ? Object.keys(conteoPorConcierto).reduce((a, b) =>
+        conteoPorConcierto[a] > conteoPorConcierto[b] ? a : b)
+    : "Sin compras aún";
+
+  // Usuario con más compras
+  const compraPorUsuario = {};
+  todasLasCompras.forEach(c => {
+    compraPorUsuario[c.comprador] = (compraPorUsuario[c.comprador] || 0) + c.cantidad;
+  });
+  const usuarioTop = totalCompras > 0
+    ? Object.keys(compraPorUsuario).reduce((a, b) =>
+        compraPorUsuario[a] > compraPorUsuario[b] ? a : b)
+    : "Sin compras aún";
+
+  resumenEstadisticas.innerHTML += `
+    <h3 class="dashboard-titulo">📊 Estadísticas de ventas</h3>
+
+    <div class="estadistica dashboard-principal">
+      <strong>Total recaudado</strong>
+      <div class="numero-dashboard">$${totalRecaudado.toLocaleString("es-MX")}</div>
+    </div>
+
+    <div class="estadistica dashboard-principal">
+      <strong>Total de boletos vendidos</strong>
+      <div class="numero-dashboard">${totalBoletos}</div>
+    </div>
+
+    <div class="estadistica dashboard-principal">
+      <strong>Total de transacciones</strong>
+      <div class="numero-dashboard">${totalCompras}</div>
+    </div>
+
+    <div class="estadistica">
+      <strong>Concierto más vendido:</strong> ${conciertoTop}
+    </div>
+
+    <div class="estadistica">
+      <strong>Sección más vendida:</strong> ${seccionTop.charAt(0).toUpperCase() + seccionTop.slice(1)}
+    </div>
+
+    <div class="estadistica">
+      <strong>Usuario con más boletos:</strong> ${usuarioTop}
+    </div>
+  `;
+}
 // ══════════════════════════════════════════════════════════════════
 //  BLOQUE H – ARRANQUE
 // ══════════════════════════════════════════════════════════════════
