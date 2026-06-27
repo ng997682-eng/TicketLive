@@ -511,44 +511,22 @@ function cancelarEdicion() {
 // 13. Carga inicial
 obtenerProductos();
 
-// 14. Iniciar sesión de administrador
-function iniciarSesionAdmin() {
-  const usuario = document.getElementById("usuario-admin").value;
-  const password = document.getElementById("password-admin").value;
-  const mensajeLogin = document.getElementById("mensaje-login");
-
-  if (usuario === "admin" && password === "1234") {
-    document.body.classList.add("admin-activo");
-    document.getElementById("login-admin").style.display = "none";
-    mensajeLogin.textContent = "";
-    alert("Sesión de administrador iniciada.");
-  } else {
-    mensajeLogin.textContent = "Usuario o contraseña incorrectos.";
-    mensajeLogin.className = "mensaje-error";
-  }
+function entrarApp() {
+  document.getElementById("pantalla-login").style.display = "none";
+  document.getElementById("app").style.display = "block";
+  cambiarPestana("inicio");
 }
 
-//Funcion ocultar logins
+function cerrarSesion() {
+  document.getElementById("app").style.display = "none";
+  document.getElementById("pantalla-login").style.display = "flex";
+  document.body.classList.remove("admin-activo");
+}
+
 function ocultarLogins() {
-  document.getElementById("login-usuario").classList.add("oculto");
-  document.getElementById("form-crear-cuenta").classList.add("oculto");
   document.getElementById("form-login-usuario").classList.add("oculto");
+  document.getElementById("form-crear-cuenta").classList.add("oculto");
   document.getElementById("login-admin").classList.add("oculto");
-}
-
-function mostrarLoginUsuario() {
-  ocultarLogins();
-  document.getElementById("login-usuario").classList.remove("oculto");
-}
-
-function mostrarLoginAdmin() {
-  ocultarLogins();
-  document.getElementById("login-admin").classList.remove("oculto");
-}
-
-function mostrarCrearCuenta() {
-  ocultarLogins();
-  document.getElementById("form-crear-cuenta").classList.remove("oculto");
 }
 
 function mostrarIniciarUsuario() {
@@ -556,44 +534,12 @@ function mostrarIniciarUsuario() {
   document.getElementById("form-login-usuario").classList.remove("oculto");
 }
 
-function crearCuentaUsuario() {
-  const usuario = document.getElementById("nuevo-usuario").value;
-  const password = document.getElementById("nueva-password").value;
-
-  if (!usuario || !password) {
-    document.getElementById("mensaje-login").textContent = "Completa todos los campos.";
-    return;
-  }
-
-  localStorage.setItem("usuarioTicketLive", usuario);
-  localStorage.setItem("passwordTicketLive", password);
-
-  document.getElementById("mensaje-login").textContent = "Cuenta creada correctamente.";
+function mostrarCrearCuenta() {
+  ocultarLogins();
+  document.getElementById("form-crear-cuenta").classList.remove("oculto");
 }
 
-function iniciarSesionUsuario() {
-  const usuario = document.getElementById("usuario-login").value;
-  const password = document.getElementById("password-login").value;
-
-  const usuarioGuardado = localStorage.getItem("usuarioTicketLive");
-  const passwordGuardada = localStorage.getItem("passwordTicketLive");
-
-  if (usuario === usuarioGuardado && password === passwordGuardada) {
-    document.body.classList.remove("admin-activo");
-    cambiarPestana("inicio");
-  } else {
-    document.getElementById("mensaje-login").textContent = "Usuario o contraseña incorrectos.";
-  }
-}
-
-function iniciarSesionAdmin() {
-  const usuario = document.getElementById("usuario-admin").value;
-  const password = document.getElementById("password-admin").value;
-
-  if (usuario === "admin" && password === "1234") {
-    document.body.classList.add("admin-activo");
-    cambiarPestana("inicio");
-  } else {
-    document.getElementById("mensaje-login").textContent = "Administrador o contraseña incorrectos.";
-  }
+function mostrarLoginAdmin() {
+  ocultarLogins();
+  document.getElementById("login-admin").classList.remove("oculto");
 }
