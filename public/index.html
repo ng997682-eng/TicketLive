@@ -3,81 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema de conciertos</title>
+  <title>TicketLive</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
+<!-- ══════════════════════════════════════════
+     PANTALLA DE ACCESO
+══════════════════════════════════════════ -->
+<section id="pantalla-login" class="pantalla-login">
+  <div class="login-card">
+
+    <div class="login-logo">
+      <h1>TicketLive</h1>
+      <p>Sistema de gestión de conciertos</p>
+    </div>
+
+    <!-- Paso 1: selección de rol -->
+    <div id="pantalla-principal" class="login-form">
+      <h2>Bienvenido</h2>
+      <p>¿Cómo deseas continuar?</p>
+      <div class="tipo-acceso">
+        <button type="button" onclick="mostrarIniciarUsuario()">👤 Usuario</button>
+        <button type="button" onclick="mostrarLoginAdmin()">🔐 Administrador</button>
+      </div>
+      <button type="button" class="btn-secundario" onclick="mostrarCrearCuenta()">
+        ✏️ Crear cuenta nueva
+      </button>
+    </div>
+
+    <!-- Paso 2a: login usuario -->
+    <div id="form-login-usuario" class="login-form oculto">
+      <h2>Iniciar sesión</h2>
+      <input type="text"     id="usuario-login"  placeholder="Usuario">
+      <input type="password" id="password-login" placeholder="Contraseña">
+      <button type="button" onclick="iniciarSesionUsuario()">Entrar</button>
+      <div class="login-links">
+        <span>¿No tienes cuenta?</span>
+        <button type="button" class="btn-link" onclick="mostrarCrearCuenta()">Crear cuenta</button>
+      </div>
+      <button type="button" class="btn-secundario" onclick="mostrarPantallaPrincipal()">← Regresar</button>
+    </div>
+
+    <!-- Paso 2b: crear cuenta -->
+    <div id="form-crear-cuenta" class="login-form oculto">
+      <h2>Crear cuenta</h2>
+      <input type="text"     id="nuevo-usuario"  placeholder="Nombre de usuario">
+      <input type="password" id="nueva-password" placeholder="Contraseña"
+             oninput="mostrarFortaleza(this.value,'fortaleza-password')">
+      <!-- Indicador de fortaleza -->
+      <div id="fortaleza-password"></div>
+      <div class="reglas-password">
+        <p>La contraseña debe tener:</p>
+        <ul>
+          <li>Mínimo 8 caracteres</li>
+          <li>Al menos una mayúscula</li>
+          <li>Al menos un número</li>
+          <li>Al menos un símbolo especial (!@#$...)</li>
+        </ul>
+      </div>
+      <button type="button" onclick="crearCuentaUsuario()">Crear cuenta</button>
+      <button type="button" class="btn-secundario" onclick="mostrarIniciarUsuario()">← Ya tengo cuenta</button>
+    </div>
+
+    <!-- Paso 2c: login admin -->
+    <div id="login-admin" class="login-form oculto">
+      <h2>Acceso administrador</h2>
+      <input type="text"     id="usuario-admin"  placeholder="Usuario administrador">
+      <input type="password" id="password-admin" placeholder="Contraseña">
+      <button type="button" onclick="iniciarSesionAdmin()">Entrar como admin</button>
+      <button type="button" class="btn-secundario" onclick="mostrarPantallaPrincipal()">← Regresar</button>
+    </div>
+
+    <p id="mensaje-login"></p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     APLICACIÓN PRINCIPAL
+══════════════════════════════════════════ -->
+<div id="app" style="display:none;">
 
   <header class="encabezado">
     <h1>TicketLive</h1>
   </header>
 
   <nav class="tabs">
-    <button class="tab active" data-tab="login">🔐 Iniciar sesión</button>
-   <button class="tab" data-tab="inicio">🏠 Inicio</button>
-    <button class="tab" data-tab="productos">🎤 Conciertos</button>
+    <button class="tab active"  data-tab="inicio">🏠 Inicio</button>
+    <button class="tab"         data-tab="productos">🎤 Conciertos</button>
+    <button class="tab"         data-tab="historial" onclick="mostrarHistorial()">🎟️ Mis compras</button>
     <button class="tab solo-admin" data-tab="agregar">➕ Agregar</button>
     <button class="tab solo-admin" data-tab="estadisticas">📊 Dashboard</button>
-    <button class="tab" data-tab="acerca">ℹ️ Acerca del sistema</button>
+    <button class="tab"         data-tab="acerca">ℹ️ Acerca</button>
+    <button class="tab btn-cerrar-sesion" type="button" onclick="cerrarSesion()">🚪 Cerrar sesión</button>
   </nav>
-
-  <section id="login-admin" class="login-admin">
-  <h2>Acceso administrador</h2>
-
-  <input type="text" id="usuario-admin" placeholder="Usuario">
-  <input type="password" id="password-admin" placeholder="Contraseña">
-
-  <button type="button" onclick="iniciarSesionAdmin()">
-    Iniciar sesión
-  </button>
-
-  <p id="mensaje-login"></p>
-</section>
-
-<section id="login" class="tab-content active login-panel">
-  <h2>Iniciar sesión</h2>
-  <p>Selecciona el tipo de acceso</p>
-
-  <div class="login-opciones">
-    <button type="button" onclick="mostrarLoginUsuario()">Usuario</button>
-    <button type="button" onclick="mostrarLoginAdmin()">Administrador</button>
-  </div>
-
-  <div id="login-usuario" class="login-form oculto">
-    <h3>Acceso de usuario</h3>
-
-    <button type="button" onclick="mostrarCrearCuenta()">Crear cuenta</button>
-    <button type="button" onclick="mostrarIniciarUsuario()">Iniciar sesión</button>
-  </div>
-
-  <div id="form-crear-cuenta" class="login-form oculto">
-    <h3>Crear cuenta</h3>
-    <input type="text" id="nuevo-usuario" placeholder="Nombre de usuario">
-    <input type="password" id="nueva-password" placeholder="Contraseña">
-    <button type="button" onclick="crearCuentaUsuario()">Crear cuenta</button>
-  </div>
-
-  <div id="form-login-usuario" class="login-form oculto">
-    <h3>Iniciar sesión como usuario</h3>
-    <input type="text" id="usuario-login" placeholder="Usuario">
-    <input type="password" id="password-login" placeholder="Contraseña">
-    <button type="button" onclick="iniciarSesionUsuario()">Entrar</button>
-  </div>
-
-  <div id="login-admin" class="login-form oculto">
-    <h3>Acceso administrador</h3>
-    <input type="text" id="usuario-admin" placeholder="Usuario administrador">
-    <input type="password" id="password-admin" placeholder="Contraseña">
-    <button type="button" onclick="iniciarSesionAdmin()">Entrar</button>
-  </div>
-
-  <p id="mensaje-login"></p>
-</section>
-
 
   <main class="contenedor">
 
+    <!-- INICIO -->
     <section id="inicio" class="tab-content active inicio-ticket">
       <div class="inicio-hero">
         <div class="inicio-texto">
@@ -85,108 +108,81 @@
           <h2>TicketLive</h2>
           <p>Administra conciertos, consulta información y estadísticas de precios y boletos disponibles.</p>
         </div>
-
         <div class="inicio-imagen">
-          <img 
-            src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80" 
-            alt="Concierto"
-          >
+          <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80" alt="Concierto">
         </div>
       </div>
     </section>
 
+    <!-- CONCIERTOS -->
     <section id="productos" class="tab-content">
       <div id="encabezado-conciertos" class="encabezado-conciertos">
-
         <div class="encabezado-texto">
           <h2>Conciertos disponibles</h2>
         </div>
-
         <div class="buscador-conciertos">
-          <input 
-            type="text" 
-            id="busqueda"
-            placeholder="Buscar artista, recinto o ciudad..."
-          >
+          <input type="text" id="busqueda" placeholder="Buscar artista, recinto o ciudad...">
           <button id="btn-buscar">🔍 Buscar</button>
         </div>
-
       </div>
-
       <div id="lista-productos" class="productos-grid"></div>
     </section>
 
+    <!-- MIS COMPRAS / HISTORIAL -->
+    <section id="historial" class="tab-content">
+      <h2>🎟️ Mis compras</h2>
+      <p>Aquí puedes ver todas tus compras, descargar tus boletos y cancelar si lo necesitas.</p>
+      <div id="lista-historial" class="historial-grid"></div>
+    </section>
+
+    <!-- AGREGAR / EDITAR (solo admin) -->
     <section id="agregar" class="tab-content">
       <h2>Agregar concierto</h2>
       <p>Registra conciertos con artista, precios por sección, recinto, ciudad y boletos disponibles.</p>
-
       <form id="form-producto" class="formulario">
         <input type="hidden" id="producto-id">
-
         <label for="nombre">Artista</label>
-        <input type="text" id="nombre" placeholder="Ejemplo: Shakira" required>
-
+        <input type="text"   id="nombre"           placeholder="Ejemplo: Shakira" required>
         <label for="fecha">Fecha del concierto</label>
-        <input type="date" id="fecha" required>
-
+        <input type="date"   id="fecha"             required>
         <label for="ciudad">Ciudad</label>
-        <input type="text" id="ciudad" placeholder="Ejemplo: Ciudad de México" required>
-
+        <input type="text"   id="ciudad"            placeholder="Ejemplo: Ciudad de México" required>
         <label for="recinto">Recinto</label>
-        <input type="text" id="recinto" placeholder="Ejemplo: Estadio GNP Seguros" required>
-
+        <input type="text"   id="recinto"           placeholder="Ejemplo: Estadio GNP Seguros" required>
         <label for="stock">Boletos disponibles</label>
-        <input type="number" id="stock" placeholder="Ejemplo: 5000" min="0" required>
-
+        <input type="number" id="stock"             placeholder="Ejemplo: 5000" min="0" required>
         <label for="precio-general">Precio General</label>
-        <input type="number" id="precio-general" placeholder="Ejemplo: 1200" min="1" required>
-
+        <input type="number" id="precio-general"    placeholder="Ejemplo: 1200" min="1" required>
         <label for="precio-preferente">Precio Preferente</label>
         <input type="number" id="precio-preferente" placeholder="Ejemplo: 2500" min="1" required>
-
         <label for="precio-vip">Precio VIP</label>
-        <input type="number" id="precio-vip" placeholder="Ejemplo: 6000" min="1" required>
-
-        <label for="imagen">Imagen del concierto</label>
-        <input 
-          type="url" 
-          id="imagen" 
-          placeholder="Pega la URL de la imagen"
-        >
-
+        <input type="number" id="precio-vip"        placeholder="Ejemplo: 6000" min="1" required>
+        <label for="imagen">Imagen del concierto (URL)</label>
+        <input type="url"    id="imagen"            placeholder="Pega la URL de la imagen">
         <button type="submit" id="btn-guardar">Guardar concierto</button>
       </form>
-
-      <button type="button" id="btn-cancelar-edicion">
-        Cancelar edición
-      </button>
-
+      <button type="button" id="btn-cancelar-edicion">Cancelar edición</button>
       <p id="mensaje"></p>
     </section>
 
+    <!-- DASHBOARD (solo admin) -->
     <section id="estadisticas" class="tab-content">
       <div class="titulo-seccion">
         <div class="dashboard-encabezado">
           <h2>Dashboard TicketLive</h2>
           <p>Consulta indicadores generales sobre conciertos, boletos, precios, recintos y ciudades.</p>
         </div>
-
         <button id="btn-estadisticas">Ver estadísticas</button>
       </div>
-
       <div id="resumen-estadisticas"></div>
     </section>
 
+    <!-- ACERCA -->
     <section id="acerca" class="tab-content">
       <h2>Acerca de TicketLive</h2>
-
-      <p>
-        Esta aplicación web permite gestionar conciertos independientes en distintas
-        ciudades y recintos. El sistema permite registrar, consultar, actualizar y
-        eliminar conciertos, además de buscar información y consultar estadísticas
-        sobre precios y boletos disponibles.
-      </p>
-
+      <p>Esta aplicación web permite gestionar conciertos independientes en distintas ciudades y recintos.
+         El sistema permite registrar, consultar, actualizar y eliminar conciertos, además de buscar
+         información y consultar estadísticas sobre precios y boletos disponibles.</p>
       <pre>
 app.js
 controllers/productos.controller.js
@@ -205,200 +201,8 @@ routes/productos.routes.js
     <p>TicketLive © 2026 | Proyecto de Desarrollo de Aplicaciones Web</p>
   </footer>
 
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TicketLive</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+</div><!-- /#app -->
 
-<body>
-
-  <!-- PANTALLA DE ACCESO -->
-  <section id="pantalla-login" class="pantalla-login">
-    <div class="login-card">
-      <h1>TicketLive</h1>
-      <p>Sistema de gestión de conciertos</p>
-
-      <h2>Iniciar sesión</h2>
-
-      <div class="tipo-acceso">
-        <button type="button" onclick="mostrarIniciarUsuario()">Usuario</button>
-        <button type="button" onclick="mostrarLoginAdmin()">Administrador</button>
-      </div>
-
-      <div id="form-login-usuario" class="login-form oculto">
-        <h3>Acceso de usuario</h3>
-        <input type="text" id="usuario-login" placeholder="Usuario">
-        <input type="password" id="password-login" placeholder="Contraseña">
-        <button type="button" onclick="iniciarSesionUsuario()">Entrar</button>
-        <p>¿No tienes cuenta?</p>
-        <button type="button" onclick="mostrarCrearCuenta()">Crear cuenta</button>
-      </div>
-
-      <div id="form-crear-cuenta" class="login-form oculto">
-        <h3>Crear cuenta</h3>
-        <input type="text" id="nuevo-usuario" placeholder="Nuevo usuario">
-        <input type="password" id="nueva-password" placeholder="Contraseña">
-        <button type="button" onclick="crearCuentaUsuario()">Crear cuenta</button>
-      </div>
-
-      <div id="login-admin" class="login-form oculto">
-        <h3>Acceso administrador</h3>
-        <input type="text" id="usuario-admin" placeholder="Usuario administrador">
-        <input type="password" id="password-admin" placeholder="Contraseña">
-        <button type="button" onclick="iniciarSesionAdmin()">Entrar</button>
-      </div>
-
-      <p id="mensaje-login"></p>
-    </div>
-  </section>
-
-  <!-- APLICACIÓN -->
-  <div id="app" style="display: none;">
-
-    <header class="encabezado">
-      <h1>TicketLive</h1>
-    </header>
-
-    <nav class="tabs">
-      <button class="tab active" data-tab="inicio">🏠 Inicio</button>
-      <button class="tab" data-tab="productos">🎤 Conciertos</button>
-      <button class="tab solo-admin" data-tab="agregar">➕ Agregar</button>
-      <button class="tab solo-admin" data-tab="estadisticas">📊 Dashboard</button>
-      <button class="tab" data-tab="acerca">ℹ️ Acerca del sistema</button>
-      <button class="tab" type="button" onclick="cerrarSesion()">🚪 Cerrar sesión</button>
-    </nav>
-
-    <main class="contenedor">
-
-      <section id="inicio" class="tab-content active inicio-ticket">
-        <div class="inicio-hero">
-          <div class="inicio-texto">
-            <p class="inicio-label">Sistema de gestión de conciertos</p>
-            <h2>TicketLive</h2>
-            <p>Administra conciertos, consulta información y estadísticas de precios y boletos disponibles.</p>
-          </div>
-
-          <div class="inicio-imagen">
-            <img 
-              src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80" 
-              alt="Concierto"
-            >
-          </div>
-        </div>
-      </section>
-
-      <section id="productos" class="tab-content">
-        <div id="encabezado-conciertos" class="encabezado-conciertos">
-          <div class="encabezado-texto">
-            <h2>Conciertos disponibles</h2>
-          </div>
-
-          <div class="buscador-conciertos">
-            <input 
-              type="text" 
-              id="busqueda"
-              placeholder="Buscar artista, recinto o ciudad..."
-            >
-            <button id="btn-buscar">🔍 Buscar</button>
-          </div>
-        </div>
-
-        <div id="lista-productos" class="productos-grid"></div>
-      </section>
-
-      <section id="agregar" class="tab-content">
-        <h2>Agregar concierto</h2>
-        <p>Registra conciertos con artista, precios por sección, recinto, ciudad y boletos disponibles.</p>
-
-        <form id="form-producto" class="formulario">
-          <input type="hidden" id="producto-id">
-
-          <label for="nombre">Artista</label>
-          <input type="text" id="nombre" placeholder="Ejemplo: Shakira" required>
-
-          <label for="fecha">Fecha del concierto</label>
-          <input type="date" id="fecha" required>
-
-          <label for="ciudad">Ciudad</label>
-          <input type="text" id="ciudad" placeholder="Ejemplo: Ciudad de México" required>
-
-          <label for="recinto">Recinto</label>
-          <input type="text" id="recinto" placeholder="Ejemplo: Estadio GNP Seguros" required>
-
-          <label for="stock">Boletos disponibles</label>
-          <input type="number" id="stock" placeholder="Ejemplo: 5000" min="0" required>
-
-          <label for="precio-general">Precio General</label>
-          <input type="number" id="precio-general" placeholder="Ejemplo: 1200" min="1" required>
-
-          <label for="precio-preferente">Precio Preferente</label>
-          <input type="number" id="precio-preferente" placeholder="Ejemplo: 2500" min="1" required>
-
-          <label for="precio-vip">Precio VIP</label>
-          <input type="number" id="precio-vip" placeholder="Ejemplo: 6000" min="1" required>
-
-          <label for="imagen">Imagen del concierto</label>
-          <input type="url" id="imagen" placeholder="Pega la URL de la imagen">
-
-          <button type="submit" id="btn-guardar">Guardar concierto</button>
-        </form>
-
-        <button type="button" id="btn-cancelar-edicion">
-          Cancelar edición
-        </button>
-
-        <p id="mensaje"></p>
-      </section>
-
-      <section id="estadisticas" class="tab-content">
-        <div class="titulo-seccion">
-          <div class="dashboard-encabezado">
-            <h2>Dashboard TicketLive</h2>
-            <p>Consulta indicadores generales sobre conciertos, boletos, precios, recintos y ciudades.</p>
-          </div>
-
-          <button id="btn-estadisticas">Ver estadísticas</button>
-        </div>
-
-        <div id="resumen-estadisticas"></div>
-      </section>
-
-      <section id="acerca" class="tab-content">
-        <h2>Acerca de TicketLive</h2>
-
-        <p>
-          Esta aplicación web permite gestionar conciertos independientes en distintas
-          ciudades y recintos. El sistema permite registrar, consultar, actualizar y
-          eliminar conciertos, además de buscar información y consultar estadísticas
-          sobre precios y boletos disponibles.
-        </p>
-
-        <pre>
-app.js
-controllers/productos.controller.js
-data/concierto.json
-models/producto.model.js
-public/index.html
-public/script.js
-public/style.css
-routes/productos.routes.js
-        </pre>
-      </section>
-
-    </main>
-
-    <footer>
-      <p>TicketLive © 2026 | Proyecto de Desarrollo de Aplicaciones Web</p>
-    </footer>
-
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
