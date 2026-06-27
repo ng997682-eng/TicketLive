@@ -112,7 +112,6 @@ function mostrarCrearCuenta() {
       mostrarFortaleza(inputPass.value, "fortaleza-password");
     });
   }
-}
 
 function mostrarLoginAdmin() {
   ocultarFormsLogin();
@@ -742,7 +741,6 @@ function generarWalletSVG(compra) {
 
 function mostrarHistorial() {
   cambiarPestana("historial");
-
   const contenedor = document.getElementById("lista-historial");
   if (!contenedor) return;
 
@@ -752,6 +750,44 @@ function mostrarHistorial() {
   }
 
   const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+
+  // ADMIN: ve todas las compras de todos los usuarios
+  if (usuarioActual.esAdmin) {
+    const todasLasCompras = [];
+    usuarios.forEach(u => {
+      (u.historial || []).forEach(compra => {
+        todasLasCompras.push({ ...compra, comprador: u.usuario });
+      });
+    });
+
+    if (todasLasCompras.length === 0) {
+      contenedor.innerHTML = "<p>No hay compras registradas aún.</p>";
+      return;
+    }
+
+    // Título dinámico
+    document.querySelector("#historial h2").textContent = "📋 Historial de compras";
+
+    contenedor.innerHTML = todasLasCompras.slice().reverse().map(compra => `
+      <div class="historial-card">
+        <div class="historial-imagen">
+          <img src="${compra.imagen || "img/concierto.jpg"}" alt="${compra.concierto}">
+        </div>
+        <div class="historial-info">
+          <span class="badge-comprador">👤 ${compra.comprador}</span>
+          <h3>${compra.concierto}</h3>
+          <p>📅 ${compra.fecha} · ${compra.recinto}, ${compra.ciudad}</p>
+          <p>🎟️ <strong>${compra.cantidad} boleto${compra.cantidad > 1 ? "s" : ""}</strong> – Sección <strong>${compra.seccion}</strong></p>
+          <p>💰 Total: <strong>$${compra.total.toLocaleString("es-MX")}</strong></p>
+          <p style="font-size:.8rem;color:#aaa">Comprado el ${compra.fechaCompra}</p>
+        </div>
+      </div>
+    `).join("");
+    return;
+  }
+
+  // USUARIO: solo ve sus propias compras
+  document.querySelector("#historial h2").textContent = "🎟️ Mis compras";
   const usuario  = usuarios.find(u => u.usuario === usuarioActual.usuario);
   const historial = usuario?.historial || [];
 
@@ -779,33 +815,6 @@ function mostrarHistorial() {
       </div>
     </div>
   `).join("");
-}
-
-function cancelarCompra(compraId) {
-  if (!confirm("¿Cancelar esta compra? Los boletos se regresarán al inventario.")) return;
-
-  const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
-  const idx      = usuarios.findIndex(u => u.usuario === usuarioActual?.usuario);
-  if (idx === -1) return;
-
-  const compra = usuarios[idx].historial?.find(c => c.id === compraId);
-  if (!compra) return;
-
-  // Quitar del historial
-  usuarios[idx].historial = usuarios[idx].historial.filter(c => c.id !== compraId);
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-  // Devolver stock al servidor (best-effort)
-  const producto = productos.find(p => p.nombre === compra.concierto);
-  if (producto) {
-    fetch(`/productos/${producto.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...producto, stock: producto.stock + compra.cantidad })
-    }).then(() => obtenerProductos()).catch(() => {});
-  }
-
-  mostrarHistorial(); // refrescar vista
 }
 
 // ══════════════════════════════════════════════════════════════════
