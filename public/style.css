@@ -775,7 +775,13 @@ pre {
   color: #b03060;
   margin-bottom: -4px;
 }
+.no-admin {
+  display: inline-block;
+}
 
+body.admin-activo .no-admin {
+  display: none !important;
+}
 .compra-form select {
   width: 100%;
   padding: 12px 14px;

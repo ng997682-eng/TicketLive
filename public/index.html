@@ -91,10 +91,9 @@
   <nav class="tabs">
     <button class="tab active"  data-tab="inicio">🏠 Inicio</button>
     <button class="tab"         data-tab="productos">🎤 Conciertos</button>
-    <button class="tab"         data-tab="historial" onclick="mostrarHistorial()">🎟️ Mis compras</button>
+    <button class="tab no-admin" data-tab="historial" onclick="mostrarHistorial()">🎟️ Mis compras</button>
     <button class="tab solo-admin" data-tab="agregar">➕ Agregar</button>
     <button class="tab solo-admin" data-tab="estadisticas">📊 Dashboard</button>
-    <button class="tab"         data-tab="acerca">ℹ️ Acerca</button>
     <button class="tab btn-cerrar-sesion" type="button" onclick="cerrarSesion()">🚪 Cerrar sesión</button>
   </nav>
 
@@ -177,25 +176,6 @@
       <div id="resumen-estadisticas"></div>
     </section>
 
-    <!-- ACERCA -->
-    <section id="acerca" class="tab-content">
-      <h2>Acerca de TicketLive</h2>
-      <p>Esta aplicación web permite gestionar conciertos independientes en distintas ciudades y recintos.
-         El sistema permite registrar, consultar, actualizar y eliminar conciertos, además de buscar
-         información y consultar estadísticas sobre precios y boletos disponibles.</p>
-      <pre>
-app.js
-controllers/productos.controller.js
-data/concierto.json
-models/producto.model.js
-public/index.html
-public/script.js
-public/style.css
-routes/productos.routes.js
-      </pre>
-    </section>
-
-  </main>
 
   <footer>
     <p>TicketLive © 2026 | Proyecto de Desarrollo de Aplicaciones Web</p>
